@@ -131,7 +131,9 @@ dmypy.json
 STL_slides.pdf
 torrijos_lopez_manzanara_sergio_tfg.pdf
 notasTFG
-code/dataset/*
-code/city_files/*
-code/cities_pois/*
+
+code/dataset
+code/cities_pois
 code/city_pois
+code/prueba.txt
+codw/city_checkins
