@@ -132,14 +132,20 @@ STL_slides.pdf
 torrijos_lopez_manzanara_sergio_tfg.pdf
 notasTFG
 
-code/dataset
-code/cities_pois
-code/city_pois
-code/prueba.txt
-code/city_checkins
-otros
+code/eight_cities
+
+code/Gowala/city_checkins
+code/Gowala/city_coordinates.txt
+code/Gowala/Gowalla_totalCheckins.txt
+
+code/Foursquare/city_checkins
+code/Foursquare/dataset
+code/Foursquare/POI_city.txt
+
 code/Notas
-code/POI_city.txt
-code/data.txt
+
+otros
+
+
 
 

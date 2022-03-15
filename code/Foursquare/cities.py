@@ -1,5 +1,4 @@
 from geopy.distance import distance
-from matplotlib.pyplot import cla
 
 # Cities
 #   ciudad nombre = split_city[0]
