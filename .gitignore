@@ -132,15 +132,28 @@ STL_slides.pdf
 torrijos_lopez_manzanara_sergio_tfg.pdf
 notasTFG
 
-code/eight_cities
-
-code/Gowala/city_checkins
 code/Gowalla/city_coordinates.txt
 code/Gowalla/Gowalla_totalCheckins.txt
+code/Gowalla/newYORK.txt
+code/Gowalla/POIs.txt
+code/Gowalla/city_checkins
 
-code/Foursquare/city_checkins
+code/eight_cities
+
 code/Foursquare/dataset
+code/Foursquare/city_checkins
 code/Foursquare/POI_city.txt
+
+code/NYTokyo/Foursquare/city_checkins
+code/NYTokyo/Foursquare/checkins.txt
+code/NYTokyo/Foursquare/POI_city.txt
+
+code/NYTokyo/Gowalla/city_checkins
+code/NYTokyo/Gowalla/Gowalla_totalCheckins.txt
+code/NYTokyo/Gowalla/POI_city.txt
+code/NYTokyo/Gowalla/city_coordinates.txt
+
+code/NYTokyo/two_cities
 
 code/Notas
 

@@ -1,17 +1,17 @@
-# import math
+import math
 # from geopy.distance import distance
 
-# def haversine(lat1, lon1, lat2, lon2):
-#     rad=math.pi/180
-#     dlat=lat2-lat1
-#     dlon=lon2-lon1
-#     R=6372.795477598
-#     a=(math.sin(rad*dlat/2))**2 + math.cos(rad*lat1)*math.cos(rad*lat2)*(math.sin(rad*dlon/2))**2
-#     distancia=2*R*math.asin(math.sqrt(a))
-#     return distancia
+def haversine(lat1, lon1, lat2, lon2):
+    rad=math.pi/180
+    dlat=lat2-lat1
+    dlon=lon2-lon1
+    R=6372.795477598
+    a=(math.sin(rad*dlat/2))**2 + math.cos(rad*lat1)*math.cos(rad*lat2)*(math.sin(rad*dlon/2))**2
+    distancia=2*R*math.asin(math.sqrt(a))
+    return distancia*1000
 
 # import datetime
-import os
+# import os
 
 # poi_dic = {}
 
@@ -63,17 +63,17 @@ import os
 #         split_coor = line_coord.split("\t")
 #         print(split_coor)
 
-# x1 = 40.663962
-# y1 = -74.011221
+x1 = 40.663962
+y1 = -74.011221
 
-# x2 = 40.733596
-# y2 = -74.003139
+x2 = 40.733596
+y2 = -74.003139
 
 # distancia1 = math.sqrt((x2-x1)**2+(y2-y1)**2)
 # distancia2 = dist = distance((x1, y1), (x2, y2)).km
-# distancia3 = haversine(x1, y1, x2, y2)
+distancia3 = haversine(x1, y1, x2, y2)
 
-# print(str(distancia1) + '\t' + str(distancia2) + '\t' + str(distancia3))
+print(str(distancia3))
 
 # original = "2010-07-24T13:45:06Z"
 # tiempo = original.split("T")
@@ -82,5 +82,5 @@ import os
 
 # print(str(dia) + '\t' + str(hora))
 
-contenido = os.listdir('.')
-print(contenido)
+# contenido = os.listdir('.')
+# print(contenido)

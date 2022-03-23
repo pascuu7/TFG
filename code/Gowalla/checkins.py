@@ -14,6 +14,7 @@ def haversine(lat1, lon1, lat2, lon2):
 i = 0
 contenido = os.listdir('../eight_cities')
 
+
 with open('city_coordinates.txt') as fcoor:
     for line_coord in fcoor:
         split_coor = line_coord.split("\t")
