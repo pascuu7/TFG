@@ -16,7 +16,6 @@ contenido = os.listdir('Gowalla/city_checkins/')
 gow_poi = {} # id: lat\tlong
 four_poi = {} # id: lat\tlong
 
-
 coincidenGow = []
 coincidenFour = []
 users = []
@@ -57,25 +56,33 @@ for name in contenido:
             split_four = line_four.split("\t")
         
 
-            if split_four[4].strip() == city:
-                # if split_four[0] not in coincidenFour:
-                 
+            # if split_four[4].strip() == city:
+            #     if split_four[0] not in coincidenFour:
+            #         pass
 
-                with open(check_gow_file) as check_gow:
-                    for line_gow in check_gow:
-                        split_gow = line_gow.split("\t")
-                        if split_gow[1] not in coincidenGow:
+    fin = time.time()
+    print(fin-inicio) 
 
-                            split_coord = gow_poi[split_gow[1]].split("\t")
-                            dist = haversine(float(split_four[2]), float(split_four[3]), float(split_coord[0]), float(split_coord[1]))
 
-                    # if dist < 5:
-                    #     coincidenFour.append(1)
-                    #     coincidenGow.append(1)
+    inicio = time.time()
+    with open(check_gow_file) as check_gow:
+        for line_gow in check_gow:
+            split_gow = line_gow.split("\t")
+            if split_gow[1] not in coincidenGow:
 
-            print(i)
+                split_coord = gow_poi[split_gow[1]].split("\t")
+                dist = haversine(float(split_four[2]), float(split_four[3]), float(split_coord[0]), float(split_coord[1]))
+
+                # if dist < 5:
+                #     coincidenFour.append(1)
+                #     coincidenGow.append(1)
+
+            # print(i)
                                 
             i += 1  
+# 
+    fin = time.time()
+    print(fin-inicio) 
             
 
 
