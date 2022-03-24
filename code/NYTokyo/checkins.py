@@ -12,14 +12,14 @@ def haversine(lat1, lon1, lat2, lon2):
 
 contenido = os.listdir('Gowalla/city_checkins/')
 
-poi_dic = {}
+gow_poi = {} # id: lat\tlong
+four_poi = {} # id: lat\tlong
 
 i = 0
 j = 0
 
 for name in contenido:
     check_gow = 'Gowalla/city_checkins/' + name
-    poi_gow = 'Foursquare/city_checkins/' + name
     city = name.replace(".txt", "")
 
     j += 1
@@ -31,21 +31,36 @@ for name in contenido:
             # print(str(i) + '\t' + str(split_poi[3].strip()) + '\t' + str(city))
 
             if split_poi[3].strip() == city:
-                poi_dic[str(split_poi[0])] = split_poi[1] + '\t' + split_poi[2]
+                gow_poi[str(split_poi[0])] = split_poi[1] + '\t' + split_poi[2]
 
             # print(str(i) + '\t' + str(split_poi) + '\t' + str(city))
 
-            i += 1
         # print(str(j) + '\t' + str(i) + '\t' + str(poi_dic['768067']))
 
 
-    with open(check_gow) as check_gow:
-        for line_check in check_gow:
-            split_check = line_check.split("\t")
+            
+    with open('Foursquare/POI_city.txt') as poi_four:
+        for line_four in poi_four:
+            split_four = line_four.split("\t")
 
-            coord = poi_dic[split_check[1]]
+            # print(str(split_four[4].strip()) + '\t' + str(city))
 
-            print(str(split_check[1]) + '\t' + str(coord)) 
+            if split_four[4].strip() == city:
+
+                with open(check_gow) as check_gow:
+                    for line_gow in check_gow:
+                        split_gow = line_gow.split("\t")
+
+                        split_coord = gow_poi[split_gow[1]].split("\t")
+
+                        # print(str(split_coord[0]) + '\t' + str(split_coord[1]))
+            i += 1
+                
+                # dist = haversine(float(split_four[2]), float(split_four[3]), float(split_coord[0]), float(split_coord[1]))
+                        
+
+
+            print(str(i) + '\t' + str(split_four)) 
 
         
 
