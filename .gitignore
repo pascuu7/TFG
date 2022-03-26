@@ -144,6 +144,8 @@ code/Foursquare/dataset
 code/Foursquare/city_checkins
 code/Foursquare/POI_city.txt
 
+code/NYTokyo/city_checkins
+
 code/NYTokyo/Foursquare/city_checkins
 code/NYTokyo/Foursquare/checkins.txt
 code/NYTokyo/Foursquare/POI_city.txt
@@ -154,6 +156,10 @@ code/NYTokyo/Gowalla/POI_city.txt
 code/NYTokyo/Gowalla/city_coordinates.txt
 
 code/NYTokyo/two_cities
+
+code/NYTokyo/coincidencias.txt
+code/NYTokyo/users.txt
+
 
 code/Notas
 
