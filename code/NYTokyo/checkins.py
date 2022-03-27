@@ -1,42 +1,40 @@
-# import os
+import os
 
-# i = 0
+i = 0
 
-# print("HOLAAAA")
+contenido = os.listdir('Gowalla/city_checkins/')
 
-# contenido = os.listdir('Foursquare/city_checkins/')
+pois = {}
+users = {}
 
-# four_users = []
+with open('coincidencias.txt') as fcoin:
+    for line_coin in fcoin:
+        split_coin = line_coin.split("\t")
 
-# pois = {}
+        pois[split_coin[0]] = split_coin[1].strip()
 
-# for name in contenido:
-#     check_four_file = 'Foursquare/city_checkins/' + name
-#     file = 'city_checkins/' + name
+
+with open('users.txt') as fusers:
+    for line_users in fusers:
+        split_users = line_users.split("\t")
+
+        users[split_users[0]] = split_users[1].strip()
+
+for name in contenido:
+    check_gow_file = 'Gowalla/city_checkins/' + name
+    file = 'city_checkins/' + name
     
-#     with open(check_four_file) as check_four:
-#         for line_four in check_four:
-#             split_check = line_four.split("\t")
-#             four_users.append(int(split_check[0]))
-#             if os.path.exists(file):
-#                 with open(file, "a") as fcheck:
-#                     fcheck.write(line_four)
-
-#             else:
-#                 with open(file, "w") as fcheck:
-#                     fcheck.write(line_four)
-#                 pass
-
-# # print(max(users))
-
-
-
-# with open('coincidencias.txt') as fcoins:
-#     for line_coin in fcoins:
-#         split_coins = line_coin.split('\t')
-#         pois[split_coins[0]] = split_coins[1]
-
-# print(pois)
+    with open(check_gow_file) as check_gow:
+        for line_gow in check_gow:
+            split_check = line_gow.split("\t")
+            
+            if split_check[1] in pois.keys():
+                i += 1
+                print(str(i) + '\t' + str(split_check) + '\t' + str(pois[split_check[1]]))
+                print(str(i) + '\t' + str(split_check) + '\t' + str(users[split_check[0]]) + '\n')
+                with open(file, "a") as fcheck:
+                    fcheck.write(str(users[split_check[0]]) + '\t' + str(pois[split_check[1]]) + '\t' + str(split_check[2]).strip() + '\n')
+                
 
         
 
