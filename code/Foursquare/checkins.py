@@ -52,7 +52,7 @@ with open('dataset/checkins.txt') as fcheck:
                 with open(fichero, "w") as fcities:
                     fcities.write(str(split_check[0]) + '\t' + id + '\t' + str(tiempo) + '\n')
             
-        # Si el formato no es correcto saltamos de linea 
+        # Si el formato no es correcto saltamos de linea
         except:
             pass
         
