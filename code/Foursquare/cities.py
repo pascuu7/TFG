@@ -20,8 +20,8 @@ with open("dataset/cities.txt") as fcities:
         # 1: latitud
         # 2: longitud
         # 3: codigo pais
-        # 4: nombre pais
-        # 5: tipo de ciudad
+        # 4: nombre pais (no lo usamos)
+        # 5: tipo de ciudad (no lo usamos)
         
         # añadimos los datos de la ciudad en la lista
         if str(split_city[3]) in cities.keys():
@@ -29,7 +29,7 @@ with open("dataset/cities.txt") as fcities:
         else:
             cities[str(split_city[3])] = [(split_city[0], split_city[1], split_city[2])]
 
-# ya tengo en cities guardados todos los paises de la siguiente forma (ej):
+# ya estan en cities guardados todos los paises de la siguiente forma (ej):
 #   CR : [('Alajuela', '10.016001', '-84.221000'), ('Heredia', '9.991998', '-84.120003'), ('San Jose', '9.930474', '-84.078621'), ('Cartago', '9.856998', '-83.921004')]
 #   PA : [('Panama', '9.002880', '-79.517079')]
 
@@ -43,7 +43,7 @@ with open("dataset/POIs.txt") as fpois:
         # 0: id foursquare
         # 1: latitud
         # 2: longitud
-        # 3: tipo poi
+        # 3: tipo poi (no lo usamos)
         # 4: codigo país 
 
         # para reducir el tiempo vemos solo los que sean de US o JP ya que son con los 
