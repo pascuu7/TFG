@@ -1,0 +1,52 @@
+GOWALA: 
+
+POI: id_poi latitud longitud
+
+CHECKINS: id_us id_poi timestamp
+
+Comparar checkins con foursquare (menos de 30km)
+
+AÑADIR NUEVA YORK 
+
+Añadir a los pois de Foursquare latitud y longitud
+
+Por cada checkin de Gowalla ver si coincide con Foursquare
+
+checkins a 5 metros
+
+##########
+
+Quedarme con el poi de menor distancia en correspondencias.
+
+Eliminar repeticiones del conjunto de datos y generar un "rating" del usuario (nº de veces que ha ido), nos quedamos con el último timestamp. 
+
+80/20: train/test ---> 
+
+TRAIN:
+	- US_NewYork_train
+	
+	Tokyo y NY por separado.
+	1. Recomendaciones con los datos de Foursquare.
+	2. Generar otro fichero con los datos de Gowalla y Foursquare y volver a entrenar.
+	
+	Recomendación:
+		- Popularidad: en un diccionario: clave: id del poi, valor: nº de veces que ha aparecido, "rating" asignado antes. Se recomiendan 			los pois que no haya visitado.
+	
+		- Knn: 
+			1. Función de similitud: ver el drive. 
+			
+		- Hibrido:
+			1. Recomendador popularidar.
+			2. Knn.
+			3. Por cada usuario almacena su posición geográfica media (midpoint). Puntos más cercanos al midpoint de ese usuario.
+			
+			Normalizar cada recomendador (lista de n pois), se suman las listas (si el poi aparece en más de una lista)
+			
+			
+TEST:
+
+Por cada usuario en test le recomendamos 50 pois. 	Fichero: ranking	usuario	poi	score
+
+Métricas: precisión y recall.
+
+

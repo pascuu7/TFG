@@ -40,12 +40,12 @@ with open('Gowalla/POI_city.txt') as poi_gow:
             for key in poi_ny:
                 dist = haversine(float(poi_ny[key][0]), float(poi_ny[key][1]), float(split_poi[1]), float(split_poi[2]))
                 if dist < 5:
-                    if os.path.exists("coincidencias.txt"):
-                        with open("coincidencias.txt", "a") as fcoin:
+                    if os.path.exists("coincidencias_pois.txt"):
+                        with open("coincidencias_pois.txt", "a") as fcoin:
                             fcoin.write(str(split_poi[0]) + '\t' + str(key) + '\n')
 
                     else:
-                        with open("coincidencias.txt", "w") as fcoin:
+                        with open("coincidencias_pois.txt", "w") as fcoin:
                             fcoin.write(str(split_poi[0]) + '\t' + str(key) + '\n')
           
         else:
@@ -53,11 +53,11 @@ with open('Gowalla/POI_city.txt') as poi_gow:
                 
                 dist = haversine(float(poi_tokyo[key][0]), float(poi_tokyo[key][1]), float(split_poi[1]), float(split_poi[2]))
                 if dist < 5:
-                    if os.path.exists("coincidencias.txt"):
-                        with open("coincidencias.txt", "a") as fcoin:
+                    if os.path.exists("coincidencias_pois.txt"):
+                        with open("coincidencias_pois.txt", "a") as fcoin:
                             fcoin.write(str(split_poi[0]) + '\t' + str(key) + '\n')
                     else:
-                        with open("coincidencias.txt", "w") as fcoin:
+                        with open("coincidencias_pois.txt", "w") as fcoin:
                             fcoin.write(str(split_poi[0]) + '\t' + str(key) + '\n')
         
         i += 1

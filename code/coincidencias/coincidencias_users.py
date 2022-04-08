@@ -39,12 +39,12 @@ for name in contenido:
                 gow_users.append(split_check[0])
                 max_user += 1
 
-                if os.path.exists('users.txt'):
-                    with open('users.txt', "a") as users:
+                if os.path.exists('coincidencias_users.txt'):
+                    with open('coincidencias_users.txt', "a") as users:
                         users.write(str(split_check[0]) + '\t' + str(max_user) + '\n')
 
                 else:
-                    with open('users.txt', "w") as users:
+                    with open('coincidencias_users.txt', "w") as users:
                         users.write(str(split_check[0]) + '\t' + str(max_user) + '\n')
 
 

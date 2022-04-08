@@ -10,12 +10,10 @@ def haversine(lat1, lon1, lat2, lon2):
     a=(math.sin(rad*dlat/2))**2 + math.cos(rad*lat1)*math.cos(rad*lat2)*(math.sin(rad*dlon/2))**2
     distancia=2*R*math.asin(math.sqrt(a))
     return distancia
-
-i = 0
 # guardamos una lista de los txt con los checkins de las ciudades de Foursquare
-contenido = os.listdir('../eight_cities')
+contenido = os.listdir('../Foursquare/city_checkins/')
 
-poi_city = open('POIs.txt', 'w')
+poi_city = open('POI_city.txt', 'w')
 pois = [] # lista con los pois que ya se han visitado para no duplicar
 
 # coordinates contiene los datos de las ciudades que hemos escogido

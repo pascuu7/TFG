@@ -128,46 +128,31 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+otros
 STL_slides.pdf
 torrijos_lopez_manzanara_sergio_tfg.pdf
-notasTFG
 
+code/Gowalla/city_checkins
 code/Gowalla/city_coordinates.txt
 code/Gowalla/Gowalla_totalCheckins.txt
-code/Gowalla/newYORK.txt
-code/Gowalla/POIs.txt
-code/Gowalla/city_checkins
+code/Gowalla/POI_city.txt
 
-code/eight_cities
-
-code/Foursquare/dataset
 code/Foursquare/city_checkins
+code/Foursquare/dataset
 code/Foursquare/POI_city.txt
 
-code/NYTokyo/city_checkins
+code/coincidencias/coincidencias_pois.txt
+code/coincidencias/coincidencias_users.txt
 
-code/NYTokyo/Foursquare/city_checkins
-code/NYTokyo/Foursquare/checkins.txt
-code/NYTokyo/Foursquare/POI_city.txt
+code/user_ratings
 
-code/NYTokyo/Gowalla/city_checkins
-code/NYTokyo/Gowalla/Gowalla_totalCheckins.txt
-code/NYTokyo/Gowalla/POI_city.txt
-code/NYTokyo/Gowalla/city_coordinates.txt
+code/city_checkins
 
-code/NYTokyo/ratings
-
-code/NYTokyo/two_cities
-
-code/NYTokyo/POI_city.txt
-code/NYTokyo/coincidencias.txt
-code/NYTokyo/users.txt
+code/POI_city.txt
 
 
 
-code/Notas
 
-otros
 
 
 

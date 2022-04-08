@@ -7,14 +7,14 @@ contenido = os.listdir('Gowalla/city_checkins/')
 pois = {}
 users = {}
 
-with open('coincidencias.txt') as fcoin:
+with open('coincidencias/coincidencias_pois.txt') as fcoin:
     for line_coin in fcoin:
         split_coin = line_coin.split("\t")
 
         pois[split_coin[0]] = split_coin[1].strip()
 
 
-with open('users.txt') as fusers:
+with open('coincidencias/coincidencias_users.txt') as fusers:
     for line_users in fusers:
         split_users = line_users.split("\t")
 
