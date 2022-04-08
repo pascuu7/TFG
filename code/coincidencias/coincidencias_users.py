@@ -1,3 +1,7 @@
+""" Se encarga de crear la correspondencia de los id de los usuarios de Gowalla
+con respecto al id de usuario que le hemos asignado nosotros siguiendo los id de
+usuarios de Foursquare """
+
 import os
 
 # guardamos en contenido la lista de ficheros con los checkins de Foursquare

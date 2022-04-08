@@ -1,3 +1,6 @@
+""" Se encarga de crear el fichero con todos los putnos de interés, viendo antes
+a que ciudad pertenece usando la función haversine """
+
 import math
 
 # función para calcular la distancia entre dos coordenadas en km
@@ -12,7 +15,9 @@ def haversine(lat1, lon1, lat2, lon2):
 
 city_pois = open('POI_city.txt', 'w') # fichero a escribir
 
-cities = {} # diccionarios con pois de cada país
+# diccionarios con pois de cada país
+cities = {} # codigo_pais: (ciudad1, latitud1, longitud1), (ciudad2, latitud2, longitud2)...
+
 with open("dataset/cities.txt") as fcities:
     for line_city in fcities:
         split_city = line_city.split("\t")
@@ -33,7 +38,8 @@ with open("dataset/cities.txt") as fcities:
 #   CR : [('Alajuela', '10.016001', '-84.221000'), ('Heredia', '9.991998', '-84.120003'), ('San Jose', '9.930474', '-84.078621'), ('Cartago', '9.856998', '-83.921004')]
 #   PA : [('Panama', '9.002880', '-79.517079')]
 
-j = 0
+# id de los pois
+i = 0
 
 with open("dataset/POIs.txt") as fpois:
     for line_poi in fpois:
@@ -63,9 +69,10 @@ with open("dataset/POIs.txt") as fpois:
             # para reducir el tiempo, cremos únicamente el fichero de pois con los pois de las 
             # ciudades con las que vamos a trabajar
             if ciudad == 'New York' or ciudad == 'Tokyo':
-                j += 1
+                # incrementamos en 1 el id del poi
+                i += 1
 
                 # POI_city.txt:
                     # id_nuestro    id_foursquare  latitud  longitud    ciudad
-                city_pois.write(str(j) + '\t' + str(split_poi[0]) + '\t' + str(split_poi[1]) + '\t' + str(split_poi[2]) + '\t' + str(split_poi[4].strip()) + "_" + str(ciudad.replace(" ", "")) + '\n')    
+                city_pois.write(str(i) + '\t' + str(split_poi[0]) + '\t' + str(split_poi[1]) + '\t' + str(split_poi[2]) + '\t' + str(split_poi[4].strip()) + "_" + str(ciudad.replace(" ", "")) + '\n')    
             

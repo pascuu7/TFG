@@ -1,10 +1,14 @@
+""" Se encarga de crear los ficheros correspondientes a los checkins de cada ciudad
+comprobando que el id del punto de interés del checkin corresponde con alguno de los
+id de los pois de las ciudades que hemos seleccionado. Antes convertimos la fecha del
+checkin en timestamp para trabajar mejor con ella """
+
 import datetime
 import os
 
-poi_dic = {}
+poi_dic = {} # id_foursquare: ciudad id_nuestro
 
-# id_foursquare: diudad id_nuestro
-
+# recorremos el fichero de puntos de interés para guardarlos en el diccionario
 with open('POI_city.txt') as fpois:
     for line_pois in fpois:
         split_pois = line_pois.split("\t")

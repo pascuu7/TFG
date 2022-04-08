@@ -1,3 +1,9 @@
+""" Se encarga de crear el fichero de puntos de interés calculando la distancia
+de los pois de Gowalla con respecto a las coordenadas de las ciudades según 
+Foursquare. Además crea los respectivos ficheros de checkins para Gowalla habiendo
+transformado antes la fecha dada en timestamp (solo nos quedamos con los checkins
+de las ciudades que hemos seleccionado) """
+
 import datetime
 import math
 import os

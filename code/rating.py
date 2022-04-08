@@ -1,3 +1,7 @@
+""" Se encarga de crear un fichero con los ratings del usuario a cada punto de interés
+en función del número de veces que ha visitado ese punto de interés, además selecciona
+el último checkin a la hora de guardar el timestamp """
+
 import os
 
 # guardamos en contenido la lista de los ficheros de checkins común (Gowalla y Foursquare)

@@ -1,3 +1,7 @@
+""" Se encarga de crear la correspondencia de puntos de interés de Gowalla con 
+respecto a los puntos de interés de Foursquare usando una distancia máxima de 5
+metros para que puedan ser el mismo punto de interés """
+
 import math
 import os
 

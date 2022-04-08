@@ -1,3 +1,7 @@
+""" Se encarga de unir los checkins de ambas aplicaciones (Foursquare y Gowalla)
+a través de dos fichero creados anteriormente cuyo contenido muestra las 
+correspondencias entre los usuarios y los pois """
+
 import os
 
 # guardamos en contenido la lista de los ficheros de checkins de Gowalla
