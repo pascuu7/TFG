@@ -2,6 +2,7 @@ import datetime
 import math
 import os
 
+# funcion haversine para calcular la distancia entre dos coordenadas
 def haversine(lat1, lon1, lat2, lon2):
     rad=math.pi/180
     dlat=lat2-lat1
@@ -10,6 +11,7 @@ def haversine(lat1, lon1, lat2, lon2):
     a=(math.sin(rad*dlat/2))**2 + math.cos(rad*lat1)*math.cos(rad*lat2)*(math.sin(rad*dlon/2))**2
     distancia=2*R*math.asin(math.sqrt(a))
     return distancia
+    
 # guardamos una lista de los txt con los checkins de las ciudades de Foursquare
 contenido = os.listdir('../Foursquare/city_checkins/')
 
@@ -60,13 +62,13 @@ with open('city_coordinates.txt') as fcoor:
                             if id not in pois:
                                 pois.append(id)
                                 # POIs.txt:
-                                # id_poi    latitud     longitud    ciudad
+                                    # id_poi    latitud     longitud    ciudad
                                 poi_city.write(str(id) + '\t' + str(split_check[2]) + '\t' + str(split_check[3]) + '\t' + str(name).replace('.txt', '') + '\n')
 
                             fichero = "city_checkins/" + name
 
                             # US_NewYork.txt:
-                            # id_usuario    id_poi  timestamp
+                                # id_usuario    id_poi  timestamp
                             if os.path.exists(fichero):
                                 with open(fichero, "a") as fcities:
                                     fcities.write(str(split_check[0]) + '\t' + str(split_check[4]).strip() + '\t' + str(tiempo) + '\n')

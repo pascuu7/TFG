@@ -41,7 +41,7 @@ for name in contenido:
                 max_user += 1
 
                 # coincidencias_users.txt:
-                # id_Gowalla    id_asignado
+                    # id_Gowalla    id_asignado
                 if os.path.exists('coincidencias_users.txt'):
                     with open('coincidencias_users.txt', "a") as users:
                         users.write(str(split_check[0]) + '\t' + str(max_user) + '\n')

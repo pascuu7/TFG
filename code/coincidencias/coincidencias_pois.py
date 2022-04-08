@@ -62,7 +62,7 @@ with open('../Gowalla/POI_city.txt') as poi_gow:
                     min_dist = dist
 
                     # coincidencias_pois.txt:
-                    # id_Gowalla    id_Foursquare
+                        # id_Gowalla    id_Foursquare
                     if os.path.exists("coincidencias_pois.txt"):
                         with open("coincidencias_pois.txt", "a") as fcoin:
                             fcoin.write(str(split_poi[0]) + '\t' + str(key) + '\n')

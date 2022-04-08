@@ -1,58 +1,58 @@
 import os
 
-
+# guardamos en contenido la lista de los ficheros de checkins común (Gowalla y Foursquare)
 contenido = os.listdir('city_checkins/')
 
-dic_timestamp = {}
-dic_rating = {}
-i = 0
+# diccionarios con el usuario de clave y los checkins correspondientes
+dic_timestamp = {} # id_usuario: (id_poi1 : timestamp1, id_poi2 : timestamp2 ...)
+dic_rating = {} # "id_usuario   id_poi  ciudad.txt": rating
 
+# recorremos los ficheros de checkins para calcular el rating
 for name in contenido:
     file = 'city_checkins/' + name
     
     with open(file) as fcheck:
         for line_check in fcheck:
-            i +=  1
             split_check = line_check.split("\t")
             # 0: user
             # 1: poi
             # 2: timestamp
 
-            # print(i, split_check)
-
+            # si el usuario no esta en el diccionario el poi y timestamp que estamos viendo
             if split_check[0] not in dic_timestamp.keys():
                 dic_timestamp[split_check[0]] = {split_check[1]: split_check[2].strip()}
+            # si el usuario ya se encuentra en el diccionario, añadimos o modificamos el poi que estamos viendo
             else:
                 dic_timestamp[split_check[0]][split_check[1]] = split_check[2].strip()
 
-            key = split_check[0] + 'n' + split_check[1] + 'n' + name
+            # clave para guardar en el diccionario de ratings (user poi ciudad.txt)
+            key = split_check[0] + '\t' + split_check[1] + '\t' + name
 
+            # si la clave no está en el diccionario la igualamos a 1
             if key not in dic_rating.keys():
                 dic_rating[key] = 1
+            # si ya se encuentra en el diccionario le sumamos 1
             else:
                 dic_rating[key] = dic_rating[key] + 1
-                prueba = key
             
+# abrimos los 2 ficheros para escribir los checkins con sus ratings
+for name in contenido:
+    file = 'user_ratings/' + name
+    open(file, 'w')
 
-open('ratings/JP_Tokyo.txt', 'w')
-open('ratings/US_NewYork.txt', 'w')
-
+# recorremos el diccionario de ratings
 for key in dic_rating:
-    split_rat = key.split('n')
+    split_rat = key.split('\t')
+    # 0: id_usuario
+    # 1: id_poi
+    # 2: ciudad.txt
 
-    name = 'ratings/' + split_rat[2].strip()
+    name = 'user_ratings/' + split_rat[2].strip()
 
+    # US_NewYork.txt:
+        # id_usuario    id_poi_nuestro  timestamp rating
     file = open(name, 'a')
     file.write(str(split_rat[0]) + '\t' + str(split_rat[1]) + '\t' + str(dic_timestamp[split_rat[0]][split_rat[1]]) + '\t' + str(dic_rating[key]) + '\n')
-    # print(split_rat[0], split_rat[1], dic_timestamp[split_rat[0]][split_rat[1]], dic_rating[key])
-
-
-            # if split_check[0] not in dic.keys():
-            #     dic[split_check[0]] = {split_check[1]: (0, split_check[2])}
-            # else:
-            #     dic[split_check[0]][split_check[1]] = (dic[split_check[0]][split_check[1]][0] + 1, split_check[2])
-
-        
 
 
 

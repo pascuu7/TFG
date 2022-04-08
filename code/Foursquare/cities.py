@@ -66,6 +66,6 @@ with open("dataset/POIs.txt") as fpois:
                 j += 1
 
                 # POI_city.txt:
-                # id_nuestro    id_foursquare  latitud  longitud    ciudad
+                    # id_nuestro    id_foursquare  latitud  longitud    ciudad
                 city_pois.write(str(j) + '\t' + str(split_poi[0]) + '\t' + str(split_poi[1]) + '\t' + str(split_poi[2]) + '\t' + str(split_poi[4].strip()) + "_" + str(ciudad.replace(" ", "")) + '\n')    
             
