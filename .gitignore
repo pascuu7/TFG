@@ -131,23 +131,24 @@ dmypy.json
 otros
 documentacion
 
-code/Gowalla/city_checkins
-code/Gowalla/city_coordinates.txt
-code/Gowalla/Gowalla_totalCheckins.txt
-code/Gowalla/POI_city.txt
+code/dataset/Gowalla/city_checkins
+code/dataset/Gowalla/city_coordinates.txt
+code/dataset/Gowalla/Gowalla_totalCheckins.txt
+code/dataset/Gowalla/POI_city.txt
 
-code/Foursquare/city_checkins
-code/Foursquare/dataset
-code/Foursquare/POI_city.txt
+code/dataset/Foursquare/city_checkins
+code/dataset/Foursquare/dataset
+code/dataset/Foursquare/user_ratings
+code/dataset/Foursquare/POI_city.txt
 
-code/coincidencias/coincidencias_pois.txt
-code/coincidencias/coincidencias_users.txt
+code/dataset/coincidencias/coincidencias_pois.txt
+code/dataset/coincidencias/coincidencias_users.txt
 
-code/user_ratings
+code/dataset/user_ratings
 
-code/city_checkins
+code/dataset/city_checkins
 
-code/POI_city.txt
+code/dataset/POI_city.txt
 
 
 
