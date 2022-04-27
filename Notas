@@ -20,6 +20,10 @@ Quedarme con el poi de menor distancia en correspondencias.
 
 Eliminar repeticiones del conjunto de datos y generar un "rating" del usuario (nº de veces que ha ido), nos quedamos con el último timestamp. 
 
+
+HECHO HASTA AQUÍ
+
+
 80/20: train/test ---> 
 
 TRAIN:
