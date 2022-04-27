@@ -42,8 +42,7 @@ for name in contenido:
 # abrimos los 2 ficheros para escribir los checkins con sus ratings
 for name in contenido:
     file = 'user_ratings/' + name
-    file = open(file, 'w')
-    file.write('user\tpoi\ttimestamp\trating\n')
+    open(file, 'w')
 
 # recorremos el diccionario de ratings
 for key in dic_rating:
