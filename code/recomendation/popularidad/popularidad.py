@@ -34,7 +34,7 @@ with open('../train_test/US_NewYork/US_NewYork_train.txt') as ny_train:
 #?????????????????????? 
 
         # si coincide el usuario, añadimos el poi
-        if user_in == split_ny[0]:
+        if user_in == split_ny[0] and split_ny[1] not in pois:
             pois.append(split_ny[1])
 
         # si hemos visitado el poi, sumamos el rating que hay con el nuevo
@@ -52,11 +52,8 @@ with open('../train_test/JP_Tokyo/JP_Tokyo_train.txt') as tk_train:
         # 2: timestamp
         # 3: rating
 
-#?????????????????????? 
-        # visits[split_tk[0]].append(split_tk[1])
-#?????????????????????? 
         # si coincide el usuario, añadimos el poi
-        if user_in == split_tk[0]:
+        if user_in == split_tk[0] and split_tk[1] not in pois:
             pois.append(split_tk[1])
 
         # si hemos visitado el poi, sumamos el rating que hay con el nuevo
@@ -90,9 +87,10 @@ for poi in sorted_tk:
     if len(recomended_tk) == 50:
         break
 
+# print(recomended_ny)
+# print(recomended_tk)
+
 # if in_city == 'New York':
 #     for poi in ny_rating:
 #         if poi not in visits[in_user]:
 #             cities.append()
-
-

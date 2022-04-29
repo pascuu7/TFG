@@ -19,8 +19,10 @@
 
 # print(new)
 
-i = 2
+# i = 2
 
-next(i)
+# next(i)
 
-print(i)
+# print(i)
+
+print(1**2)
