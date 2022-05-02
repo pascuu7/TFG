@@ -5,18 +5,13 @@ transformado antes la fecha dada en timestamp (solo nos quedamos con los checkin
 de las ciudades que hemos seleccionado) """
 
 import datetime
-import math
 import os
 
-# funcion haversine para calcular la distancia entre dos coordenadas
-def haversine(lat1, lon1, lat2, lon2):
-    rad=math.pi/180
-    dlat=lat2-lat1
-    dlon=lon2-lon1
-    R=6372.795477598
-    a=(math.sin(rad*dlat/2))**2 + math.cos(rad*lat1)*math.cos(rad*lat2)*(math.sin(rad*dlon/2))**2
-    distancia=2*R*math.asin(math.sqrt(a))
-    return distancia
+import sys
+
+sys.path.append('../../')
+
+from functions import haversine
     
 # guardamos una lista de los txt con los checkins de las ciudades de Foursquare
 contenido = os.listdir('../Foursquare/city_checkins/')
