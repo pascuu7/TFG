@@ -16,16 +16,12 @@ sim = {} # id_user: similitud
 ny_rating = {} # id_poi: rating_total
 tk_rating = {}
 
-# diccionario con los pois a recomendar
-recomended_ny = {} # id_poi: rating
-recomended_tk = {}
-
 # pois que el usuario ya ha visitado
 user_pois = []
 
 # SIMILITUD
 
-def knn(file_ny, file_tk, user_in):
+def knn(file_ny, file_tk, user_in, hybrid):
     # Recorremos los 2 ficheros añadiendo a pois los pois que ya ha visitado el usuario
     with open(file_ny) as ny_train:
         for line_ny in ny_train:
@@ -104,8 +100,7 @@ def knn(file_ny, file_tk, user_in):
             # 1: poi
             # 2: timestamp
             # 3: rating
-
-            
+         
             if split_ny[1] not in ny_rating.keys():
                 ny_rating[split_ny[1]] = (sim[split_ny[0]] * int(split_ny[3].strip()))
             # si lo hemos añadido ya, añadimos el poir
@@ -119,8 +114,6 @@ def knn(file_ny, file_tk, user_in):
             # 1: poi
             # 2: timestamp
             # 3: rating
-
-
             
             if split_tk[1] not in tk_rating.keys():
                 tk_rating[split_tk[1]] = sim[split_tk[0]] * int(split_tk[3].strip())
@@ -128,5 +121,9 @@ def knn(file_ny, file_tk, user_in):
             else:
                 tk_rating[split_tk[1]] += sim[split_tk[0]] * int(split_tk[3].strip())
 
-    return fifty_pois(ny_rating, tk_rating, user_pois)
+    if hybrid:
+        return fifty_pois(ny_rating, tk_rating, user_pois, False)
+
+    else:
+        return fifty_pois(ny_rating, tk_rating, user_pois, True)
 

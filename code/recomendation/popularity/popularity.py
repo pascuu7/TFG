@@ -11,17 +11,13 @@ from functions import fifty_pois
 ny_rating = {} # id_poi: rating_total
 tk_rating = {}
 
-# diccionario con los pois a recomendar
-recomended_ny = {} # id_poi: rating
-recomended_tk = {}
-
 # pois que ha visitado el usuario
 # visits = {} # id_user: [id_po1, id_poi2, ...]
 
 # pois que el usuario ya ha visitado
 user_pois = []
 
-def popularity(file_ny, file_tk, user_in):
+def popularity(file_ny, file_tk, user_in, hybrid):
     # Recorremos los 2 ficheros añadiendo a pois los pois que ya ha visitado el usuario    
     # y para guardar en el diccionario la suma de los ratings de cada poi
     with open(file_ny) as ny_train:
@@ -62,4 +58,8 @@ def popularity(file_ny, file_tk, user_in):
             else:
                 tk_rating[split_tk[1]] = int(split_tk[3].strip())
 
-    return fifty_pois(ny_rating, tk_rating, user_pois)
+    if hybrid:
+        return fifty_pois(ny_rating, tk_rating, user_pois, False)
+
+    else:
+        return fifty_pois(ny_rating, tk_rating, user_pois, True)

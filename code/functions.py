@@ -9,14 +9,31 @@ def haversine(lat1, lon1, lat2, lon2):
     distancia=2*R*math.asin(math.sqrt(a))
     return distancia
 
-def fifty_pois(ny_rating, tk_rating, user_pois):
+def fifty_pois(ny_rating, tk_rating, user_pois, fifty):
     # diccionario con los pois a recomendar
     recomended_ny = {} # id_poi: rating
     recomended_tk = {}
 
+    maximo = max(ny_rating.values())
+    minimo = min(ny_rating.values())
+
+    if maximo != minimo:
+
+        for poi in ny_rating.keys():
+            ny_rating[poi] = (ny_rating[poi]-minimo) / (maximo-minimo)
+
+    maximo = max(tk_rating.values())
+    minimo = min(tk_rating.values())
+
+    if maximo != minimo:
+
+        for poi in tk_rating.keys():
+            tk_rating[poi] = (tk_rating[poi]-minimo) / (maximo-minimo)
+
     # ordenamos los diccionarios de mayor a menor según su rating
     sorted_ny = sorted(ny_rating.items(), key=lambda x: x[1], reverse=True)
     sorted_tk = sorted(tk_rating.items(), key=lambda x: x[1], reverse=True)
+
 
     # recorremos el diccionario y por cada poi comprobamos si lo ha visitado el usuario
     for poi in sorted_ny:
@@ -25,7 +42,7 @@ def fifty_pois(ny_rating, tk_rating, user_pois):
             recomended_ny[poi[0]] = poi[1]
 
         # si ya se ha recomendado 50, paramos
-        if len(recomended_ny) == 50:
+        if len(recomended_ny) == 50 and fifty:
             break
     
     # recorremos el diccionario y por cada poi comprobamos si lo ha visitado el usuario
@@ -35,7 +52,7 @@ def fifty_pois(ny_rating, tk_rating, user_pois):
             recomended_tk[poi[0]] = poi[1]
 
         # si ya se ha recomendado 50, paramos
-        if len(recomended_tk) == 50:
+        if len(recomended_tk) == 50 and fifty:
             break
 
     return recomended_ny, recomended_tk
