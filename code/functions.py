@@ -20,6 +20,8 @@ def normalize_dic(rating):
         for poi in rating.keys():
             rating[poi] = (rating[poi]-minimo) / (maximo-minimo)
 
+    return rating
+
 def fifty_pois(rating, user_pois):
     # diccionario con los pois a recomendar
     recomended = {} # id_poi: score
