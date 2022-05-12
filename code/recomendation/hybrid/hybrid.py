@@ -65,13 +65,12 @@ def hybrid(poi_file, file, out, user_in = '52049'):
 
         for poi in pois_coord.keys():
             dist = haversine(mid_point[0], mid_point[1], pois_coord[poi][0], pois_coord[poi][1])
-        #     dists.append(dist)
-        
-        # max_dist = max(dists)
+            # if dist != 0:
+            rating[poi] = 1 / dist
+            # rating[poi] = 50 - dist
 
-        # for poi in pois_coord.keys():
-        #     dist = haversine(mid_point[0], mid_point[1], pois_coord[poi][0], pois_coord[poi][1]) 
-            rating[poi] = 50 - dist
+            # else:
+            #     rating[poi] = 
 
     else:
         for poi in pois_coord.keys():
