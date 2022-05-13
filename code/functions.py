@@ -1,8 +1,6 @@
 import math
 import os
 
-from urllib3 import Retry
-
 def haversine(lat1, lon1, lat2, lon2):
     rad=math.pi/180
     dlat=lat2-lat1
@@ -20,7 +18,7 @@ def normalize_dic(rating):
     # comprobamos que no vaya a ser 0/0
     if maximo != minimo:
         # por cada elemento normalizamos entre 0 y 1 ((valor-mínimo)/(máximo-mínimo))
-        for poi in rating.keys():
+        for poi in rating:
             rating[poi] = (rating[poi]-minimo) / (maximo-minimo)
 
     return rating
@@ -29,14 +27,14 @@ def sort_recomendations(rating):
     # ordenamos los diccionarios de mayor a menor según su rating
     sort = sorted(rating.items(), key=lambda x: x[1], reverse=True)
 
-    return sort
+    return list(filter(lambda x:x[1] > 0, sort))
 
 def fifty_pois(rating, user_pois):
     # diccionario con los pois a recomendar
     recomended = {} # id_poi: score
 
     # recorremos el diccionario y por cada poi comprobamos si lo ha visitado el usuario
-    for poi in rating:
+    for poi in rating[0:50]:
         # si no lo ha visitado, lo guardamos en el diccionario de recomendados
         if poi[0] not in user_pois:
             recomended[poi[0]] = poi[1]
@@ -48,7 +46,7 @@ def fifty_pois(rating, user_pois):
     return recomended
 
 def read_users(file):
-    users = []
+    users = set()
 
     with open(file) as test:
         for line in test:
@@ -58,8 +56,8 @@ def read_users(file):
             # 2: timestamp
             # 3: rating
 
-            if split[0] not in users:
-                users.append(split[0])
+            users.add(int(split[0]))
+
     return users
 
 def user_pois(ffile, user):
@@ -83,9 +81,9 @@ def write_recomendations(recomended, user, out):
 
     if os.path.exists(out):
         with open(out, "a") as fout:
-            for poi in recomended.keys():
-                fout.write(user + '\t' + poi + '\t' + str(recomended[poi]) + '\n')
+            for poi in recomended:
+                fout.write(str(user) + '\t' + str(poi) + '\t' + str(recomended[poi]) + '\n')
     else:
         with open(out, "w") as fout:
-            for poi in recomended.keys():
-                fout.write(user + '\t' + poi + '\t' + str(recomended[poi]) + '\n')
+            for poi in recomended:
+                fout.write(str(user) + '\t' + str(poi) + '\t' + str(recomended[poi]) + '\n')
