@@ -1,6 +1,7 @@
 from knn.knn import knn
 from popularity.popularity import popularity
 
+import time
 import sys
 
 sys.path.append('../')
@@ -35,6 +36,7 @@ def hybrid(poi_file, ftrain, ftest, out, k):
                 pois_coord[split_poi[0]] = (float(split_poi[2]), float(split_poi[3]))
 
     for user in users:
+        inicio = time.time()
         # recomendación final de cada poi
         recomended = {} # id_poi: rating_hibrido
 
@@ -93,7 +95,10 @@ def hybrid(poi_file, ftrain, ftest, out, k):
                 recomended[poi] = normalized_hybrid[poi]
 
 
-        return fifty_pois(recomended, user_pois)
+        fifty_pois(sort_recomendations(recomended), user_pois)
+
+        fin = time.time()
+        print((fin-inicio)*10000)
 
 
     

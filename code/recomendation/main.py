@@ -37,10 +37,10 @@ test_tk = 'train_test/JP_Tokyo/JP_Tokyo_test.txt'
 # RANDOM
 
 # fout_ny_random = 'users_recomendations/Random/NY_50.txt'
-# fout_tk_random = 'users_recomendations/Random/TK_50.txt'
+fout_tk_random = 'users_recomendations/Random/TK_50.txt'
 
 # random_ny = rand(train_ny, test_ny, fout_ny_random)
-# random_tk = rand(train_tk, test_tk, fout_tk_random)
+random_tk = rand(train_tk, test_tk, fout_tk_random)
 
 
 
@@ -59,10 +59,10 @@ test_tk = 'train_test/JP_Tokyo/JP_Tokyo_test.txt'
 # SKYLINE
 
 # fout_ny_skyline = 'users_recomendations/Skyline/NY_Skyline.txt'
-fout_tk_skyline = 'users_recomendations/Skyline/TK_Skyline.txt'
+# fout_tk_skyline = 'users_recomendations/Skyline/TK_Skyline.txt'
 
 # skyline_ny = skyline(train_ny, test_ny, fout_ny_skyline)
-skyline_tk = skyline(train_tk, test_tk, fout_tk_skyline)
+# skyline_tk = skyline(train_tk, test_tk, fout_tk_skyline)
 
 
 
