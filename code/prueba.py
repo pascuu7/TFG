@@ -26,8 +26,7 @@
 # print(i)
 import random
 
-x = [1,2,3,4,5,6,7,8]
-
-random.shuffle(x)
-
-print(x)
+for k in range(1,11):
+    if k != 5:
+        fout_ny_knn = 'users_recomendations/Knn/NY_Top50_Knn' + str(k*10) + '.txt'
+        print(fout_ny_knn)

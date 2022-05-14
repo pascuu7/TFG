@@ -21,7 +21,7 @@ import time
 
 # SIMILITUD
 
-def knn(ftrain, ftest, out, k):
+def knn(ftrain, ftest, k, out = None, hybrid = False):
     set_pois = set()
     users = read_users(ftest)
 
@@ -63,9 +63,8 @@ def knn(ftrain, ftest, out, k):
         # rating del poi para usuario
         rating = {} # id_poi: rating_total
 
-        inicio = time.time()
-        if user_test in users_visit.keys():
-            user_pois = users_visit[user_test].keys()
+        if user_test in users_visit:
+            user_pois = users_visit[user_test]
         else:
             user_pois = []
 

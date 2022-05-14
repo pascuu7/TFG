@@ -16,7 +16,7 @@ rating = {} # id_poi: rating_total
 
 user_pois = {}
 
-def popularity(ftrain, test, out, repeated = True):
+def popularity(ftrain, ftest, repeated = False, out = None, hybrid = False):
     # Recorremos el fichero para guardar en el diccionario 
     # la suma de los ratings de cada poi
     with open(ftrain) as train:
@@ -27,27 +27,27 @@ def popularity(ftrain, test, out, repeated = True):
             # 2: timestamp
             # 3: rating
 
-            if split[0] not in user_pois.keys():
-                user_pois[split[0]] = [split[1]]
+            if split[0] not in user_pois:
+                user_pois[split[0]] = set(split[1]) # estaba como [split[1]]
             else:
-                user_pois[split[0]].append(split[1])
+                user_pois[split[0]].add(split[1]) # estaba como append en vez de add
 
             if repeated:
                 # si hemos visitado el poi, sumamos el rating que hay con el nuevo
-                if split[1] in rating.keys():
+                if split[1] in rating:
                     rating[split[1]] = int(rating[split[1]]) + int(split[3].strip())
                 # si no lo hemos visitado lo guardamos
                 else:
                     rating[split[1]] = int(split[3].strip())
             else:
-                if split[1] in rating.keys():
+                if split[1] in rating:
                     rating[split[1]] += 1
                 # si no lo hemos visitado lo guardamos
                 else:
                     rating[split[1]] = 1
         
     sorted = sort_recomendations(rating)
-    users = read_users(test)
+    users = read_users(ftest)
 
     train.close()
 
@@ -56,12 +56,15 @@ def popularity(ftrain, test, out, repeated = True):
     for user in users:
         i += 1
         print(i)
-        if user in user_pois.keys():
+        if user in user_pois:
             pois = user_pois[user]
         else:
             pois = []
         
         recomended = fifty_pois(sorted, pois)
 
-        write_recomendations(recomended, user, out)
+        if hybrid:
+            return recomended
+        else:
+            write_recomendations(recomended, user, out)
         
