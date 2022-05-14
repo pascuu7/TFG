@@ -2,7 +2,7 @@
 según los pois que no ha visitado """
 
 import sys
-import os
+import time
 
 sys.path.append('../')
 
@@ -16,7 +16,7 @@ rating = {} # id_poi: rating_total
 
 user_pois = {}
 
-def popularity(ftrain, ftest, repeated = False, out = None, hybrid = False):
+def data_prepare_pop(ftrain, repeated = False):
     # Recorremos el fichero para guardar en el diccionario 
     # la suma de los ratings de cada poi
     with open(ftrain) as train:
@@ -47,24 +47,42 @@ def popularity(ftrain, ftest, repeated = False, out = None, hybrid = False):
                     rating[split[1]] = 1
         
     sorted = sort_recomendations(rating)
-    users = read_users(ftest)
-
+    
     train.close()
+
+    return sorted
+
+def all_users_pop(user, hybrid, out, sorted):
+    inicio = time.time()
+    if user in user_pois:
+        pois = user_pois[user]
+    else:
+        pois = []
+    
+    recomended = fifty_pois(sorted, pois)
+
+    if hybrid:
+        # print("ENTRA POP")
+        return recomended
+    else:
+        # print("NO POP")
+        write_recomendations(recomended, user, out)
+        
+
+
+def popularity(ftrain, ftest, repeated = False, out = None, hybrid = False, hybrid_pop = None):
+    
+    
+    sorted = data_prepare_pop(ftrain, ftest, repeated)
+    users = read_users(ftest)
 
     i = 0
 
     for user in users:
         i += 1
-        print(i)
-        if user in user_pois:
-            pois = user_pois[user]
-        else:
-            pois = []
-        
-        recomended = fifty_pois(sorted, pois)
+        # print(i)
+        all_users_pop(user, hybrid, out, sorted)
 
-        if hybrid:
-            return recomended
-        else:
-            write_recomendations(recomended, user, out)
+        # fin = time.time()
+        # print('Recomended: ' ,(fin-inicio)*11000, '\n\n')
         

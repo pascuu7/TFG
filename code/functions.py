@@ -39,10 +39,6 @@ def fifty_pois(rating, user_pois):
         if poi[0] not in user_pois:
             recomended[poi[0]] = poi[1]
 
-        # si ya se ha recomendado 50, paramos
-        if len(recomended) == 50:
-            break
-
     return recomended
 
 def read_users(file):
@@ -61,7 +57,7 @@ def read_users(file):
     return users
 
 def user_pois(ffile, user):
-    user_pois = []
+    user_pois = set()
     with open(ffile) as file:
         for line in file:
             split = line.split("\t")
@@ -71,8 +67,8 @@ def user_pois(ffile, user):
             # 3: rating
 
             # si coincide el usuario, añadimos el poi
-            if user == split[0] and split[1] not in user_pois:
-                user_pois.append(split[1])
+            if user == split[0]:
+                user_pois.add(split[1])
     file.close()
 
     return user_pois

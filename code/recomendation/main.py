@@ -29,29 +29,28 @@ test_tk = 'train_test/JP_Tokyo/JP_Tokyo_test.txt'
 # fout_ny_knn = 'users_recomendations/Knn/NY_Top50_Knn90.txt'
 # fout_tk_knn = 'users_recomendations/Knn/TK_Top50_Knn10.txt'
 
-# knn_ny = (train_ny, test_ny, 90, out = fout_ny_knn)
-# knn_tk = (train_tk, test_tk, 10, out = fout_tk_knn)
-
+# knn(train_ny, test_ny, 5, out='users_recomendations/Knn/prueba.txt')
+# knn(train_tk, test_tk, 10, out = fout_tk_knn)
 
 
 # RANDOM
 
 # fout_ny_random = 'users_recomendations/Random/NY_50.txt'
-fout_tk_random = 'users_recomendations/Random/TK_50.txt'
+# fout_tk_random = 'users_recomendations/Random/TK_50.txt'
 
 # random_ny = rand(train_ny, test_ny, fout_ny_random)
-random_tk = rand(train_tk, test_tk, fout_tk_random)
+# random_tk = rand(train_tk, test_tk, fout_tk_random)
 
 
 
 # HYBRID
 
-# poi_file = '../dataset/Foursquare/POI_city.txt'
+poi_file = '../dataset/Foursquare/POI_city.txt'
 
-# fout_ny_hybrid = 'users_recomendations/Hybrid/NY_Top50_knn5.txt'
+fout_ny_hybrid = 'users_recomendations/Hybrid/NY_Top50_knn5.txt'
 # fout_tk_hybrid = 'users_recomendations/Hybrid/TK_Top50_knn5.txt'
 
-# hybrid_ny = hybrid(poi_file, train_ny, test_ny, fout_ny_hybrid, 5)
+hybrid_ny = hybrid(poi_file, train_ny, test_ny, None, 100)
 # hybrid_tk = hybrid(poi_file, train_tk, test_tk, fout_tk_hybrid, 5)
 
 
