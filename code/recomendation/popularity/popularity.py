@@ -28,7 +28,7 @@ def popularity(ftrain, ftest, repeated = False, out = None, hybrid = False):
             # 3: rating
 
             if split[0] not in user_pois:
-                user_pois[split[0]] = set(split[1]) # estaba como [split[1]]
+                user_pois[split[0]] = set([split[1]]) # estaba como [split[1]]
             else:
                 user_pois[split[0]].add(split[1]) # estaba como append en vez de add
 

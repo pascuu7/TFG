@@ -26,7 +26,7 @@
 # print(i)
 import random
 
-for k in range(1,11):
-    if k != 5:
-        fout_ny_knn = 'users_recomendations/Knn/NY_Top50_Knn' + str(k*10) + '.txt'
-        print(fout_ny_knn)
+a = set(['HOLA'])
+a.add('ADIOS')
+
+print(a)

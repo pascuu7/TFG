@@ -20,7 +20,7 @@ test_tk = 'train_test/JP_Tokyo/JP_Tokyo_test.txt'
 # fout_tk_false_pop = 'users_recomendations/Popularity/TK_Top50_RepeatedScoreFalse.txt'
 
 # popularity_ny = popularity(train_ny, test_ny, out=fout_ny_false_pop)
-# popularity_tk = popularity(train_tk, test_tk, out=fout_tk_true_pop, repeated=True)
+# popularity_tk = popularity(train_tk, test_tk, out=fout_tk_false_pop)
 
 
 
@@ -59,10 +59,10 @@ test_tk = 'train_test/JP_Tokyo/JP_Tokyo_test.txt'
 # SKYLINE
 
 # fout_ny_skyline = 'users_recomendations/Skyline/NY_Skyline.txt'
-# fout_tk_skyline = 'users_recomendations/Skyline/TK_Skyline.txt'
+fout_tk_skyline = 'users_recomendations/Skyline/TK_Skyline.txt'
 
-# skyline_ny = skyline(test_ny, fout_ny_skyline)
-# skyline_ny = skyline(test_tk, fout_tk_skyline)
+# skyline_ny = skyline(train_ny, test_ny, fout_ny_skyline)
+skyline_tk = skyline(train_tk, test_tk, fout_tk_skyline)
 
 
 
