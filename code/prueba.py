@@ -24,9 +24,27 @@
 # next(i)
 
 # print(i)
-import random
 
-a = set(['HOLA'])
-a.add('ADIOS')
+with open('recomendation/train_test/US_NewYork/US_NewYork_train.txt') as file:
+    for line in file:
+        split = line.split("\t")
+        # 0: id user
+        # 1: id poi
+        # 2: timestamp
+        # 3: rating
+        if int(split[1]) == 971:
+            print(split[0])
 
-print(a)
+
+# l1 = set([1, 5, 3, 4, 2])
+# l2 = set([5, 1, 7, 6, 2])
+# l3 = set([7, 6, 1, 8, 9])
+
+# pr = set()
+# print("Common Elements", pr)
+# pr = pr | l1
+# print("Common Elements", pr)
+# pr = pr | l2
+# print("Common Elements", pr)
+# pr = pr | l3
+# print("Common Elements", pr)

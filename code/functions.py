@@ -34,10 +34,13 @@ def fifty_pois(rating, user_pois):
     recomended = {} # id_poi: score
 
     # recorremos el diccionario y por cada poi comprobamos si lo ha visitado el usuario
-    for poi in rating[0:50]:
+    for poi in rating:
         # si no lo ha visitado, lo guardamos en el diccionario de recomendados
         if poi[0] not in user_pois:
             recomended[poi[0]] = poi[1]
+
+        if len(recomended) == 50:
+            break
 
     return recomended
 

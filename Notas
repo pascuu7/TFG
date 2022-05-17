@@ -53,4 +53,60 @@ Por cada usuario en test le recomendamos 50 pois. 	Fichero: ranking	usuario	poi	
 
 Métricas: precisión y recall.
 
+Recuerda que además de generar recomendaciones, habría que evaluarlas.
+Para esto me gustaría tener al menos estas métricas: Precision, Recall y
+Aggregate Diversity. Todas ellas se pueden computar con un cutoff, que
+es básicamente un número que va a indicar el top de recomendaciones que
+vamos a considerar por cada usuario. Recuerda que de momento
+seleccionamos el top 50 pero para evaluar las recomendaciones es posible
+que solo nos interesen el top 10.
+
+Precision@N queda definido de esta forma (donde N es el cutoff):
+(|Relevantes interseccion Recommendados@N|) / N. Los relevantes son
+todos los ítems que el usuario ha consumido en el conjunto de test. Los
+recomendados@N son los N primeros artículos que se han recomendado al
+usuario. De esta forma, si calculamos Precision@10, seleccionamos TODOS
+los items que el usuario ha visitado en test, calculamos la intersección
+con los 10 primeros artículos recomendados y dividimos por 10. Esto se
+hace por cada usuario que haya en test! Por lo que la precision@N del
+recomendador en su totalidad sería la media de la precision@N obtenida
+por todos los usuarios de test. Recuerda que en este caso los símbolos
+de barras verticales ("|") indican la cardinalidad del conjunto. Es
+decir, si yo digo |Relevantes| quiero decir que es el número total de
+artículos relevantes de ese usuario.
+
+
+Recall@N queda definido de esta manera: (|Relevantes interseccion
+Recommendados@N|) / |Relevantes|. Muy parecido a precision, solo que
+cambia el denominador.
+
+AggregateDisversity es una medida de diversidad, no de acierto, como las
+otras dos. En este caso se calcula cogiendo los N artículos recomendados
+de cada usuario y metiendolos todos en un conjunto. El valor de
+AggregateDiversity es la cardinalidad de dicho conjunto. Me explico:
+Supongamos que tenemos 2 usuarios a los que hemos efectuado 3
+recomendaciones. Al primero le hemos recomendado los artículos 1,2 y 3 y
+al segudo usuario el 1,2 y 4. El aggregate Diversity sería 4, debido a
+que el cpnjunto total de artículos recomendados sería 1,2,3 y 4 (se han
+recomendado 4 artículos distintos en total). Si al segundo usuario le
+hubiésemos recomendado los artículos  1,4 y 8, el aggregate diversity
+sería 5 (porque el conjunto total sería el 1,2,3, 4 y 8). Lo prioritario
+serían las otras dos métricas, por lo que si esta no lo ves clara,
+prioriza las otras dos.
+
+La idea de los experimentos es por lo tanto: Generar recomendaciones POR
+SEPARADO para Tokyo y para Nueva York solo con los datos de Foursquare.
+Una vez tengamos esos recomendadores, ejecutarlos de nuevo cambiando el
+de entrenamiento de Foursquare por el de Foursquare y Gowalla. Evaluar
+las recomendaciones y ver si ganamos algo al emplear el conjunto de
+entrenamiento ampliado.
+
+
+Para el knn, como tiene varios parámetros, como te comenté ayer: el
+número de vecinos que varíe de esta manera:
+5,10,20,30,40,50,60,70,80,90,100 (cada uno de estos parámetros debería
+ser un recomendador independiente. Es decir, una cosa será el KNN de
+Foursquare de Tokyo con 5 vecinos y otro el de 100 vecinos).
+
+
 

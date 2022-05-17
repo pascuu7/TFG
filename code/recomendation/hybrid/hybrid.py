@@ -1,4 +1,5 @@
 from cv2 import norm
+from joblib import PrintTime
 from knn.knn import all_users_knn, knn
 from knn.knn import data_prepare_knn
 
@@ -24,7 +25,7 @@ def hybrid(poi_file, ftrain, ftest, out, k):
 
     users = read_users(ftest)
     hybrid_popularity = data_prepare_pop(ftrain)
-    hybrid_knn = data_prepare_knn(ftrain)
+    data_prepare_knn(ftrain)
 
     with open(poi_file) as poi_file:
         for line_poi in poi_file:
@@ -40,6 +41,11 @@ def hybrid(poi_file, ftrain, ftest, out, k):
                 pois_coord[int(split_poi[0])] = (float(split_poi[2]), float(split_poi[3]))
             else:
                 pois_coord[int(split_poi[0])] = (float(split_poi[2]), float(split_poi[3]))
+    # u = None
+    # for user in users:
+    #     if u == 105653:
+    #         # pri
+    #     u = user
 
     i = 0
     for user in users:
@@ -71,7 +77,6 @@ def hybrid(poi_file, ftrain, ftest, out, k):
                 # 3: rating
 
                 if user == int(split[0]):
-                    # print("HAY POI", split[1])
                     user_pois.add(int(split[1]))
                     mid_lat += pois_coord[int(split[1])][0]
                     mid_lon += pois_coord[int(split[1])][1]
@@ -86,8 +91,11 @@ def hybrid(poi_file, ftrain, ftest, out, k):
             for poi in pois_coord:
                 if poi not in user_pois:
                     dist = haversine(mid_point[0], mid_point[1], pois_coord[poi][0], pois_coord[poi][1])
-                    if dist < 500:
+                    if dist < 500 and dist > 0:
                         rating[poi] = 1/dist
+
+                    elif dist == 0:
+                        rating[poi] = 200
         
         # fin = time.time()
         # print('Rating: ' ,(fin-inicio)*11000, '\n\n')
@@ -141,11 +149,11 @@ def hybrid(poi_file, ftrain, ftest, out, k):
         # fin = time.time()
         # print('Final: ' ,(fin-inicio)*11000, '\n\n')
 
-        print(user, recomended, '\n\n')
+        # print(user, recomended, '\n\n')
 
         
 
-        # write_recomendations(recomended, user, out)
+        write_recomendations(recomended, user, out)
 
 
 

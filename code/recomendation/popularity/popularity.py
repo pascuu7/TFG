@@ -2,7 +2,6 @@
 según los pois que no ha visitado """
 
 import sys
-import time
 
 sys.path.append('../')
 
@@ -14,9 +13,12 @@ from functions import write_recomendations
 # suma de ratings de cada poi
 rating = {} # id_poi: rating_total
 
-user_pois = {}
+# pois que han visitado los usuarios
+user_visits = {} # id_user: { id_poi1: rating, id_poi2: rating }
 
 def data_prepare_pop(ftrain, repeated = False):
+    
+
     # Recorremos el fichero para guardar en el diccionario 
     # la suma de los ratings de cada poi
     with open(ftrain) as train:
@@ -27,24 +29,24 @@ def data_prepare_pop(ftrain, repeated = False):
             # 2: timestamp
             # 3: rating
 
-            if split[0] not in user_pois:
-                user_pois[split[0]] = set([split[1]]) # estaba como [split[1]]
+            if int(split[0]) not in user_visits:
+                user_visits[int(split[0])] = set([int(split[1])]) # estaba como [split[1]]
             else:
-                user_pois[split[0]].add(split[1]) # estaba como append en vez de add
+                user_visits[int(split[0])].add(int(split[1])) # estaba como append en vez de add
 
             if repeated:
                 # si hemos visitado el poi, sumamos el rating que hay con el nuevo
-                if split[1] in rating:
-                    rating[split[1]] = int(rating[split[1]]) + int(split[3].strip())
+                if int(split[1]) in rating:
+                    rating[int(split[1])] = int(rating[int(split[1])]) + int(split[3].strip())
                 # si no lo hemos visitado lo guardamos
                 else:
-                    rating[split[1]] = int(split[3].strip())
+                    rating[int(split[1])] = int(split[3].strip())
             else:
-                if split[1] in rating:
-                    rating[split[1]] += 1
+                if int(split[1]) in rating:
+                    rating[int(split[1])] += 1
                 # si no lo hemos visitado lo guardamos
                 else:
-                    rating[split[1]] = 1
+                    rating[int(split[1])] = 1
         
     sorted = sort_recomendations(rating)
     
@@ -53,27 +55,24 @@ def data_prepare_pop(ftrain, repeated = False):
     return sorted
 
 def all_users_pop(user, hybrid, out, sorted):
-    inicio = time.time()
-    if user in user_pois:
-        pois = user_pois[user]
+    if user in user_visits:
+        user_pois = user_visits[user]
     else:
-        pois = []
-    
-    recomended = fifty_pois(sorted, pois)
+        user_pois = set()
+
+    recomended = fifty_pois(sorted, user_pois)
 
     if hybrid:
-        # print("ENTRA POP")
         return recomended
-    else:
-        # print("NO POP")
+    else:     
         write_recomendations(recomended, user, out)
         
 
 
-def popularity(ftrain, ftest, repeated = False, out = None, hybrid = False, hybrid_pop = None):
+def popularity(ftrain, ftest, repeated = False, out = None, hybrid = False):
     
     
-    sorted = data_prepare_pop(ftrain, ftest, repeated)
+    sorted = data_prepare_pop(ftrain, repeated)
     users = read_users(ftest)
 
     i = 0

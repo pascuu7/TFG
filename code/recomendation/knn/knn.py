@@ -18,8 +18,6 @@ user_squared = {} # id_user: (4² + 2² + 3² ...)
 
 set_pois = set()
 
-# prueba = [201733, 66101, 52511, 131759, 198807, 169284, 243144, 85141, 204180, 180168]
-
 import time
 
 def data_prepare_knn(ftrain):
