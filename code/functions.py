@@ -11,7 +11,7 @@ def haversine(lat1, lon1, lat2, lon2):
     return distancia
 
 
-def normalize_dic(rating):  
+def normalize_dic(rating, palabra):  
     maximo = max(rating.values()) # valor máximo del diccionario
     minimo = min(rating.values()) # valor mínimo del diccionario
 

@@ -18,14 +18,44 @@ from functions import sort_recomendations
 from functions import read_users
 from functions import write_recomendations
 
-# almacena las coordenadas de cada poi
-pois_coord = {} # id_poi: (latitud, longitud)
 
 def hybrid(poi_file, ftrain, ftest, out, k):
 
+    # almacena las coordenadas de cada poi
+    pois_coord = {} # id_poi: (latitud, longitud)
+
+    # guardamos las predicciones de los otros recomendadores
+    knn_recomended = {}
+    pop_recomended = {}
+
     users = read_users(ftest)
-    hybrid_popularity = data_prepare_pop(ftrain)
-    data_prepare_knn(ftrain)
+    city = out.split("/")[2].split("_")[0]
+    file_pop = 'users_recomendations/Popularity/' + city + '_Top50_RepeatedScoreFalse.txt'
+    file_knn = 'users_recomendations/Knn/' + city + '_Top50_Knn' + str(k) + '.txt'
+    
+    with open(file_pop) as fpop:
+        for line_pop in fpop:
+            split_pop = line_pop.split("\t")
+            # 0: id usuario
+            # 1: id poi
+            # 2: rating
+
+            if int(split_pop[0]) not in pop_recomended:
+                pop_recomended[int(split_pop[0])] = {int(split_pop[1]): int(split_pop[2].strip())} # estaba como [split[1]]
+            else:
+                pop_recomended[int(split_pop[0])][int(split_pop[1])] =  int(split_pop[2].strip())# estaba como append en vez de add
+
+    with open(file_knn) as fknn:
+        for line_knn in fknn:
+            split_knn = line_knn.split("\t")
+            # 0: id usuario
+            # 1: id poi
+            # 2: rating
+
+            if int(split_knn[0]) not in knn_recomended:
+                knn_recomended[int(split_knn[0])] = {int(split_knn[1]): float(split_knn[2].strip())} # estaba como [split[1]]
+            else:
+                knn_recomended[int(split_knn[0])][int(split_knn[1])] =  float(split_knn[2].strip())# estaba como append en vez de add 
 
     with open(poi_file) as poi_file:
         for line_poi in poi_file:
@@ -41,15 +71,9 @@ def hybrid(poi_file, ftrain, ftest, out, k):
                 pois_coord[int(split_poi[0])] = (float(split_poi[2]), float(split_poi[3]))
             else:
                 pois_coord[int(split_poi[0])] = (float(split_poi[2]), float(split_poi[3]))
-    # u = None
-    # for user in users:
-    #     if u == 105653:
-    #         # pri
-    #     u = user
 
     i = 0
     for user in users:
-        inicio = time.time()
         i += 1
         print(i)
         
@@ -81,10 +105,7 @@ def hybrid(poi_file, ftrain, ftest, out, k):
                     mid_lat += pois_coord[int(split[1])][0]
                     mid_lon += pois_coord[int(split[1])][1]
                     num += 1
-        
-        # fin = time.time()
-        # print('Calcular elementos ecuacion: ' ,(fin-inicio)*11000, '\n\n')
-        # inicio = time.time()
+
         if num != 0:
             mid_point = (mid_lat/num, mid_lon/num)
 
@@ -96,34 +117,14 @@ def hybrid(poi_file, ftrain, ftest, out, k):
 
                     elif dist == 0:
                         rating[poi] = 200
-        
-        # fin = time.time()
-        # print('Rating: ' ,(fin-inicio)*11000, '\n\n')
-        # inicio = time.time()
 
-        popularity_rec = all_users_pop(user, True, out, hybrid_popularity)
-        normalized_popularity = normalize_dic(popularity_rec)
+        normalized_popularity = normalize_dic(pop_recomended[user], 'popu ')
         recomended = normalized_popularity
 
-        # fin = time.time()
-        # print('Popularity: ' ,(fin-inicio)*11000, '\n\n')
-        # inicio = time.time()
-
-
-        knn_rec = all_users_knn(user, True, out, k)
-        # fin = time.time()
-        # print('KNN: ' ,(fin-inicio)*11000, '\n\n')
-        
-        # inicio = time.time()
-        if knn_rec:
-            normalized_knn = normalize_dic(knn_rec)
+        if user in knn_recomended:
+            normalized_knn = normalize_dic(knn_recomended[user], 'knn ')
         else:
             normalized_knn = {}
-
-        # fin = time.time()
-        # print('NORMALIZED KNN: ' ,(fin-inicio)*11000, '\n\n')
-
-        # inicio = time.time()
 
         for poi in normalized_knn:
             if poi in recomended:
@@ -131,9 +132,10 @@ def hybrid(poi_file, ftrain, ftest, out, k):
             else:
                 recomended[poi] = normalized_knn[poi]
 
+
         if rating:
             hybrid_rec = fifty_pois(sort_recomendations(rating), user_pois)
-            normalized_hybrid = normalize_dic(hybrid_rec)
+            normalized_hybrid = normalize_dic(hybrid_rec, 'hybrid ')
 
             for poi in normalized_hybrid:
                 if poi in recomended:
@@ -141,17 +143,7 @@ def hybrid(poi_file, ftrain, ftest, out, k):
                 else:
                     recomended[poi] = normalized_hybrid[poi]
 
-        # fin = time.time()
-        # print('Recomended: ' ,(fin-inicio)*11000, '\n\n')
-        # inicio = time.time()
-
         recomended = fifty_pois(sort_recomendations(recomended), user_pois)
-        # fin = time.time()
-        # print('Final: ' ,(fin-inicio)*11000, '\n\n')
-
-        # print(user, recomended, '\n\n')
-
-        
 
         write_recomendations(recomended, user, out)
 

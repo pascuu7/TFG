@@ -15,12 +15,12 @@ test_tk = 'train_test/JP_Tokyo/JP_Tokyo_test.txt'
 
 # POPULARIDAD
 
-fout_ny_true_pop = 'users_recomendations/Popularity/NY_Top50_RepeatedScoreTrue.txt'
-# fout_tk_true_pop = 'users_recomendations/Popularity/TK_Top50_RepeatedScoreTrue.txt'
-# fout_ny_false_pop = 'users_recomendations/Popularity/NY_Top50_RepeatedScoreFalse.txt'
-# fout_tk_false_pop = 'users_recomendations/Popularity/TK_Top50_RepeatedScoreFalse.txt'
+# fout_ny_true_pop = 'users_recomendations/Popularity/NY_Top50_RepeatedScoreTrue.txt'
+# # fout_tk_true_pop = 'users_recomendations/Popularity/TK_Top50_RepeatedScoreTrue.txt'
+# # fout_ny_false_pop = 'users_recomendations/Popularity/NY_Top50_RepeatedScoreFalse.txt'
+# # fout_tk_false_pop = 'users_recomendations/Popularity/TK_Top50_RepeatedScoreFalse.txt'
 
-popularity_ny = popularity(train_ny, test_ny, out=fout_ny_true_pop, repeated=True)
+# popularity_ny = popularity(train_ny, test_ny, out=fout_ny_true_pop, repeated=True)
 # popularity_tk = popularity(train_tk, test_tk, out=fout_tk_true_pop, repeated=True)
 
 
@@ -46,12 +46,12 @@ popularity_ny = popularity(train_ny, test_ny, out=fout_ny_true_pop, repeated=Tru
 
 # HYBRID
 
-# poi_file = '../dataset/Foursquare/POI_city.txt'
+poi_file = '../dataset/Foursquare/POI_city.txt'
 
-# fout_ny_hybrid = 'otro.txt'
-# # fout_tk_hybrid = 'users_recomendations/Hybrid/TK_Top50_knn100.txt'
+fout_ny_hybrid = 'users_recomendations/Hybrid/NY_Top50_knn10.txt'
+# fout_tk_hybrid = 'users_recomendations/Hybrid/TK_Top50_knn100.txt'
 
-# hybrid_ny = hybrid(poi_file, train_ny, test_ny, fout_ny_hybrid, 30)
+hybrid_ny = hybrid(poi_file, train_ny, test_ny, fout_ny_hybrid, 10)
 # # hybrid_tk = hybrid(poi_file, train_tk, test_tk, fout_tk_hybrid, 100)
 
 
