@@ -36,7 +36,7 @@ def precision(tipo, recomendations, test, cutoff):
         intersection += len(recomended[user] & visited[user])
         users += 1
 
-    # print('\t', tipo, ':', (intersection / users)/cutoff)
+    print('\t', tipo, ':', (intersection / users)/cutoff)
 
 
 

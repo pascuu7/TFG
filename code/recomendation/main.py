@@ -1,4 +1,3 @@
-import re
 from knn.knn import knn
 from rand.rand import rand
 from popularity.popularity import popularity
@@ -28,10 +27,10 @@ test_tk = 'train_test/JP_Tokyo/JP_Tokyo_test.txt'
 # KNN
 
 # fout_ny_knn = 'users_recomendations/Knn/NY_Top50_Knn90.txt'
-# fout_tk_knn = 'users_recomendations/Knn/TK_Top50_Knn10.txt'
+fout_tk_knn = 'users_recomendations/Knn/TK_Top50_Knn60.txt'
 
 # knn(train_ny, test_ny, 5, out='users_recomendations/Knn/prueba.txt')
-# knn(train_tk, test_tk, 10, out = fout_tk_knn)
+knn(train_tk, test_tk, 60, out = fout_tk_knn)
 
 
 # RANDOM
@@ -46,13 +45,13 @@ test_tk = 'train_test/JP_Tokyo/JP_Tokyo_test.txt'
 
 # HYBRID
 
-poi_file = '../dataset/Foursquare/POI_city.txt'
+# poi_file = '../dataset/Foursquare/POI_city.txt'
 
-fout_ny_hybrid = 'users_recomendations/Hybrid/NY_Top50_knn10.txt'
-# fout_tk_hybrid = 'users_recomendations/Hybrid/TK_Top50_knn100.txt'
+# fout_ny_hybrid = 'users_recomendations/Hybrid/NY_Top50_knn50.txt'
+# # fout_tk_hybrid = 'users_recomendations/Hybrid/TK_Top50_knn100.txt'
 
-hybrid_ny = hybrid(poi_file, train_ny, test_ny, fout_ny_hybrid, 10)
-# # hybrid_tk = hybrid(poi_file, train_tk, test_tk, fout_tk_hybrid, 100)
+# hybrid_ny = hybrid(poi_file, train_ny, test_ny, fout_ny_hybrid, 50)
+# # # hybrid_tk = hybrid(poi_file, train_tk, test_tk, fout_tk_hybrid, 100)
 
 
 
