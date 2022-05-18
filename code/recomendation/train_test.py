@@ -22,8 +22,8 @@ for name in contenido:
     train, test = train_test_split(df, test_size=0.2)
 
     # nombre de los nuevos ficheros
-    ftrain = 'train_test/' + ciudad + '/' + ciudad + '_train.txt'
-    ftest = 'train_test/' + ciudad + '/' + ciudad + '_test.txt'
+    ftrain = 'train_test/PruebaFoursquare/' + ciudad + '/' + ciudad + '_train.txt'
+    ftest = 'train_test/PruebaFoursquare/' + ciudad + '/' + ciudad + '_test.txt'
 
     # US_NewYork_(train/test).txt:
         # id_usuario    id_poi_nuestro  timestamp rating

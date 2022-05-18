@@ -1,5 +1,4 @@
 import math
-
 import sys
 
 sys.path.append('../')
@@ -48,7 +47,7 @@ def data_prepare_knn(ftrain):
             else:
                 user_squared[int(split[0])] += int(split[3].strip())**2
 
-def all_users_knn(user_test, hybrid, out, k):
+def all_users_knn(user_test, out, k):
     # valor de similitud con cada usuario
     sim = {} # id_user: similitud
 
@@ -110,16 +109,12 @@ def all_users_knn(user_test, hybrid, out, k):
 
     recomended = fifty_pois(sort_recomendations(rating), user_pois)
 
-    if hybrid:
-        return recomended
-
-    else:
-        write_recomendations(recomended, user_test, out)
+    write_recomendations(recomended, user_test, out)
         
 
 # SIMILITUD
 
-def knn(ftrain, ftest, k, out = None, hybrid = False):
+def knn(ftrain, ftest, k, out = None):
     users = read_users(ftest)
 
     data_prepare_knn(ftrain)
@@ -128,6 +123,6 @@ def knn(ftrain, ftest, k, out = None, hybrid = False):
     for user_test in users:
         i += 1
         print(i)
-        all_users_knn(user_test, hybrid, out, k)
+        all_users_knn(user_test, out, k)
         
 

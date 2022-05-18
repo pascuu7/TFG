@@ -54,7 +54,7 @@ def data_prepare_pop(ftrain, repeated = False):
 
     return sorted
 
-def all_users_pop(user, hybrid, out, sorted):
+def all_users_pop(user, out, sorted):
     if user in user_visits:
         user_pois = user_visits[user]
     else:
@@ -62,14 +62,12 @@ def all_users_pop(user, hybrid, out, sorted):
 
     recomended = fifty_pois(sorted, user_pois)
 
-    if hybrid:
-        return recomended
-    else:     
-        write_recomendations(recomended, user, out)
-        
+    write_recomendations(recomended, user, out)
 
 
-def popularity(ftrain, ftest, repeated = False, out = None, hybrid = False):
+
+
+def popularity(ftrain, ftest, repeated = False, out = None):
     
     
     sorted = data_prepare_pop(ftrain, repeated)
@@ -77,10 +75,12 @@ def popularity(ftrain, ftest, repeated = False, out = None, hybrid = False):
 
     i = 0
 
-    for user in users:
+    for user in list(users)[0:3]:
         i += 1
         # print(i)
-        all_users_pop(user, hybrid, out, sorted)
+        print(user)
+        all_users_pop(user, out, sorted)
+        
 
         # fin = time.time()
         # print('Recomended: ' ,(fin-inicio)*11000, '\n\n')
