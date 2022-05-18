@@ -27,10 +27,10 @@ test_tk = 'train_test/JP_Tokyo/JP_Tokyo_test.txt'
 # KNN
 
 # fout_ny_knn = 'users_recomendations/Knn/NY_Top50_Knn90.txt'
-fout_tk_knn = 'users_recomendations/Knn/TK_Top50_Knn60.txt'
+fout_tk_knn = 'users_recomendations/Knn/TK_Top50_Knn100.txt'
 
 # knn(train_ny, test_ny, 5, out='users_recomendations/Knn/prueba.txt')
-knn(train_tk, test_tk, 60, out = fout_tk_knn)
+knn(train_tk, test_tk, 100, out = fout_tk_knn)
 
 
 # RANDOM
