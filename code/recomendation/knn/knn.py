@@ -74,42 +74,46 @@ def all_users_knn(user_test, out, k):
                 den = math.sqrt(user_squared[user_train]*user_squared[user_test]) # denominador de la ecuacion de similitud entre usuarios
                                 # sqrt(sum(ratings_us1^2) * sum(ratings_us2^2))    
                 
-                # añadimos al diccionario de similitudes la similitud con ese usuario
-                sim[user_train] = num/den
 
-    # SCORE
+                if num != 0:
+                    # añadimos al diccionario de similitudes la similitud con ese usuario
+                    sim[user_train] = num/den
 
-    similitud = sort_recomendations(sim)
-    similitud = similitud[0:k]
+    if sim:
 
-    k_neightbours = {}
+        # SCORE
 
-    for simi in similitud:
-        k_neightbours[simi[0]] = simi[1]
+        similitud = sort_recomendations(sim)
+        similitud = similitud[0:k]
 
-    # ahora en similitud tenemos solo los k usuarios con más similitud 
+        k_neightbours = {}
 
-    inicio = time.time()
-    for poi in set_pois:
-        if poi not in user_pois:
-            for user_train in k_neightbours:
-                if poi not in rating:
-                    if poi in users_visit[user_train]:
-                        
-                        rating[poi] = (k_neightbours[user_train] * users_visit[user_train][poi])
+        for simi in similitud:
+            k_neightbours[simi[0]] = simi[1]
+
+        # ahora en similitud tenemos solo los k usuarios con más similitud 
+
+        inicio = time.time()
+        for poi in set_pois:
+            if poi not in user_pois:
+                for user_train in k_neightbours:
+                    if poi not in rating:
+                        if poi in users_visit[user_train]:
+                            
+                            rating[poi] = (k_neightbours[user_train] * users_visit[user_train][poi])
+                        else:
+                            rating[poi] = 0
                     else:
-                        rating[poi] = 0
-                else:
-                    if poi in users_visit[user_train]:
-                        rating[poi] += (k_neightbours[user_train] * users_visit[user_train][poi])
-                    else:
-                        rating[poi] += 0
+                        if poi in users_visit[user_train]:
+                            rating[poi] += (k_neightbours[user_train] * users_visit[user_train][poi])
+                        else:
+                            rating[poi] += 0
 
-    
+        
 
-    recomended = fifty_pois(sort_recomendations(rating), user_pois)
+        recomended = fifty_pois(sort_recomendations(rating), user_pois)
 
-    write_recomendations(recomended, user_test, out)
+        write_recomendations(recomended, user_test, out)
         
 
 # SIMILITUD
@@ -124,5 +128,6 @@ def knn(ftrain, ftest, k, out = None):
         i += 1
         print(i)
         all_users_knn(user_test, out, k)
+        
         
 

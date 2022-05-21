@@ -75,10 +75,9 @@ def popularity(ftrain, ftest, repeated = False, out = None):
 
     i = 0
 
-    for user in list(users)[0:3]:
+    for user in users:
         i += 1
-        # print(i)
-        print(user)
+        print(i)
         all_users_pop(user, out, sorted)
         
 

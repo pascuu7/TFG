@@ -33,7 +33,8 @@ def recall(tipo, recomendations, test, cutoff):
     eval = 0
     users = 0
     for user in recomended:
-        eval += len(recomended[user] & visited[user]) / len(visited[user])
+        if user in visited:
+            eval += len(recomended[user] & visited[user]) / len(visited[user])
         users += 1
 
     print('\t', tipo, ':', (eval / users))

@@ -29,10 +29,12 @@ def hybrid(poi_file, ftrain, ftest, out, k):
     pop_recomended = {}
 
     users = read_users(ftest)
-    city = out.split("/")[2].split("_")[0]
-    file_pop = 'users_recomendations/Popularity/' + city + '_Top50_RepeatedScoreFalse.txt'
-    file_knn = 'users_recomendations/Knn/' + city + '_Top50_Knn' + str(k) + '.txt'
-    
+    city = out.split("/")[3].split("_")[0]
+    app = out.split("/")[1]
+
+    file_pop = 'users_recomendations/' + app + '/Popularity/' + city + '_Top50_RepeatedScoreFalse.txt'
+    file_knn = 'users_recomendations/' + app + '/Knn/' + city + '_Top50_Knn' + str(k) + '.txt'
+
     with open(file_pop) as fpop:
         for line_pop in fpop:
             split_pop = line_pop.split("\t")

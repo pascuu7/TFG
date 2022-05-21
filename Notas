@@ -108,5 +108,43 @@ número de vecinos que varíe de esta manera:
 ser un recomendador independiente. Es decir, una cosa será el KNN de
 Foursquare de Tokyo con 5 vecinos y otro el de 100 vecinos).
 
+-Introducción a los Sistemas de recomendación (extremadamente importante
+en la introducción y parte del estado del arte):
+
+https://link.springer.com/chapter/10.1007/978-1-4899-7637-6_1. También
+básate en el TFG que ten mandé ayer y el del otro estudiante.
+
+
+-Evaluación de los sistemas de recomendación:
+
+https://link.springer.com/chapter/10.1007/978-1-4899-7637-6_8 -> Estado
+del arte de la parte de evaluación. En este caso haremos evaluación
+offline, pero estaría bien hablar un poco de estudios de usuario y demás.
+
+
+
+-Los KNN en recomendación:
+
+https://link.springer.com/chapter/10.1007/978-1-4899-7637-6_2 -> Estado
+del arte para explicar los modelos basados en vecinos.
+
+
+
+-Cross domain (dominio cruzado en recomendación, que es lo que
+estamos haciendo con Foursquare y Gowalla):
+
+https://link.springer.com/chapter/10.1007/978-1-4899-7637-6_27 -> Estado
+del arte para indicar que vamos a emplear estas técnicas para intentar
+paliar la escasez de datos de Foursquare
+
+
+
+-POI recommendation (una survey de las técnicas más conocidas en el
+área de la recomendacion de puntos de interés):
+
+https://dl.acm.org/doi/10.1145/3510409 -> Estado del arte para explicar
+las diferencias de la recomendación de puntos de interés frente a la
+recomendación clasica.
+
 
 

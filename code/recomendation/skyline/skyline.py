@@ -28,8 +28,10 @@ def skyline(ftrain, ftest, out):
 
     inicio = time.time()
 
-
-    for user_test in visits:   
+    i = 0
+    for user_test in visits: 
+        i += 1
+        print(i)  
         if os.path.exists(out):
             with open(out, "a") as fout:
                 for poi in visits[user_test]:
