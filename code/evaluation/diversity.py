@@ -20,6 +20,3 @@ def diversity(tipo, recomendations, cutoff):
         diver = diver | recomended[user]
 
     print('\t', tipo, ':', len(diver))
-
-
-
