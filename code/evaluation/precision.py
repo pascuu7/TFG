@@ -30,12 +30,11 @@ def precision(tipo, recomendations, test, cutoff):
             else:
                 visited[int(split[0])].add(int(split[1]))
 
-    intersection = 0
+    eval = 0
     for user in recomended:
-        if user in visited:
-            intersection += len(recomended[user] & visited[user])
+        eval += len(recomended[user] & visited[user])/len(recomended[user])
 
-    print('\t', tipo, ':', (intersection / len(recomended))/cutoff)
+    print('\t', tipo, ':', eval / len(recomended))
 
 
 

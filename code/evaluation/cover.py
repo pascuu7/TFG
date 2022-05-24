@@ -1,4 +1,4 @@
-def cover(tipo, recomendations, cutoff):
+def cover(tipo, recomendations):
     users = set()
     with open(recomendations) as file:
         for line in file:

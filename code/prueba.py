@@ -25,15 +25,15 @@
 
 # print(i)
 
-with open('recomendation/train_test/US_NewYork/US_NewYork_train.txt') as file:
-    for line in file:
-        split = line.split("\t")
-        # 0: id user
-        # 1: id poi
-        # 2: timestamp
-        # 3: rating
-        if int(split[1]) == 971:
-            print(split[0])
+# with open('recomendation/train_test/US_NewYork/US_NewYork_train.txt') as file:
+#     for line in file:
+#         split = line.split("\t")
+#         # 0: id user
+#         # 1: id poi
+#         # 2: timestamp
+#         # 3: rating
+#         if int(split[1]) == 971:
+#             print(split[0])
 
 
 # l1 = set([1, 5, 3, 4, 2])
@@ -41,6 +41,17 @@ with open('recomendation/train_test/US_NewYork/US_NewYork_train.txt') as file:
 # l3 = set([7, 6, 1, 8, 9])
 
 # pr = set()
+
+# for l in l1:
+#     pr.add(l)
+# print("Common Elements", pr)
+# for l in l2:
+#     pr.add(l)
+# print("Common Elements", pr)
+# for l in l3:
+#     pr.add(l)
+# print("Common Elements", pr)
+
 # print("Common Elements", pr)
 # pr = pr | l1
 # print("Common Elements", pr)
@@ -48,3 +59,9 @@ with open('recomendation/train_test/US_NewYork/US_NewYork_train.txt') as file:
 # print("Common Elements", pr)
 # pr = pr | l3
 # print("Common Elements", pr)
+
+from functions import read_users
+
+users = read_users('recomendation/train_test/Foursquare/US_NewYork/US_NewYork_test.txt')
+
+print(len(users))
