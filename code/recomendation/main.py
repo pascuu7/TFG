@@ -58,11 +58,11 @@ test_tk = 'train_test/Gowalla/JP_Tokyo/JP_Tokyo_test.txt'
 
 poi_file = '../dataset/POI_city.txt'
 
-fout_ny_hybrid = 'users_recomendations/Gowalla/Hybrid/NY_Top50_knn50.txt'
-# fout_tk_hybrid = 'users_recomendations/Gowalla/Hybrid/TK_Top50_knn5.txt'
+# fout_ny_hybrid = 'users_recomendations/Gowalla/Hybrid/NY_Top50_knn50.txt'
+fout_tk_hybrid = 'users_recomendations/Gowalla/Hybrid/TK_Top50_knn100.txt'
 
-hybrid_ny = hybrid(poi_file, train_ny, test_ny, fout_ny_hybrid, 50)
-# hybrid_tk = hybrid(poi_file, train_tk, test_tk, fout_tk_hybrid, 5)
+# hybrid_ny = hybrid(poi_file, train_ny, test_ny, fout_ny_hybrid, 50)
+hybrid_tk = hybrid(poi_file, train_tk, test_tk, fout_tk_hybrid, 100)
 
 
 
