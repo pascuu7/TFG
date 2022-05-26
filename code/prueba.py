@@ -60,8 +60,24 @@
 # pr = pr | l3
 # print("Common Elements", pr)
 
-from functions import read_users
+# from functions import read_users
 
-users = read_users('recomendation/train_test/Foursquare/US_NewYork/US_NewYork_test.txt')
+# users = read_users('recomendation/train_test/Foursquare/US_NewYork/US_NewYork_test.txt')
 
-print(len(users))
+# print(len(users))
+
+import math
+
+def haversine(lat1, lon1, lat2, lon2):
+    rad=math.pi/180
+    dlat=lat2-lat1
+    dlon=lon2-lon1
+    R=6372.795477598
+    a=(math.sin(rad*dlat/2))**2 + math.cos(rad*lat1)*math.cos(rad*lat2)*(math.sin(rad*dlon/2))**2
+    distancia=2*R*math.asin(math.sqrt(a))
+    return distancia
+
+
+print(haversine(37.795815, -122.380092, 34.000002, -118.250001))
+print(haversine(37.795815, -122.380092, 41.826546, -87.641298))
+print(haversine(41.826546, -87.641298, 34.000002, -118.250001))

@@ -6,52 +6,52 @@ from expected_popularity import expected_popularity
 
 # NEW YORK
 
-# test_ny = '../recomendation/train_test/Gowalla/US_NewYork/US_NewYork_test.txt'
-# train_ny_four = '../recomendation/train_test/Foursquare/US_NewYork/US_NewYork_train.txt'
-# train_ny_gow = '../recomendation/train_test/Gowalla/US_NewYork/US_NewYork_train.txt'
+test_ny = '../recomendation/train_test/Gowalla/US_NewYork/US_NewYork_test.txt'
+train_ny_four = '../recomendation/train_test/Foursquare/US_NewYork/US_NewYork_train.txt'
+train_ny_gow = '../recomendation/train_test/Gowalla/US_NewYork/US_NewYork_train.txt'
 
 
-# recomendationPOPGow = '../recomendation/users_recomendations/Gowalla/Popularity/NY_Top50_RepeatedScoreTrue.txt'
-# recomendationPOPFour = '../recomendation/users_recomendations/Foursquare/Popularity/NY_Top50_RepeatedScoreTrue.txt'
+recomendationPOPGow = '../recomendation/users_recomendations/Gowalla/Popularity/NY_Top50_RepeatedScoreTrue.txt'
+recomendationPOPFour = '../recomendation/users_recomendations/Foursquare/Popularity/NY_Top50_RepeatedScoreTrue.txt'
 
-# recomendationKNNGow = '../recomendation/users_recomendations/Gowalla/Knn/NY_Top50_Knn50.txt'
-# recomendationKNNFour = '../recomendation/users_recomendations/Foursquare/Knn/NY_Top50_Knn50.txt'
+recomendationKNNGow = '../recomendation/users_recomendations/Gowalla/Knn/NY_Top50_Knn50.txt'
+recomendationKNNFour = '../recomendation/users_recomendations/Foursquare/Knn/NY_Top50_Knn50.txt'
 
-# recomendationHYBRIDGow = '../recomendation/users_recomendations/Gowalla/Hybrid/NY_Top50_knn50.txt'
-# recomendationHYBRIDFour = '../recomendation/users_recomendations/Foursquare/Hybrid/NY_Top50_knn50.txt'
+recomendationHYBRIDGow = '../recomendation/users_recomendations/Gowalla/Hybrid/NY_Top50_knn50.txt'
+recomendationHYBRIDFour = '../recomendation/users_recomendations/Foursquare/Hybrid/NY_Top50_knn50.txt'
 
-# recomendationRANDOMGow = '../recomendation/users_recomendations/Gowalla/Random/NY_50.txt'
-# recomendationRANDOMFour = '../recomendation/users_recomendations/Foursquare/Random/NY_50.txt'
+recomendationRANDOMGow = '../recomendation/users_recomendations/Gowalla/Random/NY_50.txt'
+recomendationRANDOMFour = '../recomendation/users_recomendations/Foursquare/Random/NY_50.txt'
 
-# recomendationSKYLINEGow = '../recomendation/users_recomendations/Gowalla/Skyline/NY_Skyline.txt'
-# recomendationSKYLINEFour = '../recomendation/users_recomendations/Foursquare/Skyline/NY_Skyline.txt'
+recomendationSKYLINEGow = '../recomendation/users_recomendations/Gowalla/Skyline/NY_Skyline.txt'
+recomendationSKYLINEFour = '../recomendation/users_recomendations/Foursquare/Skyline/NY_Skyline.txt'
 
 
 
 # TOKYO
 
-test_ny = '../recomendation/train_test/Gowalla/JP_Tokyo/JP_Tokyo_test.txt'
-train_ny_four = '../recomendation/train_test/Foursquare/JP_Tokyo/JP_Tokyo_train.txt'
-train_ny_gow = '../recomendation/train_test/Gowalla/JP_Tokyo/JP_Tokyo_train.txt'
+# test_ny = '../recomendation/train_test/Gowalla/JP_Tokyo/JP_Tokyo_test.txt'
+# train_ny_four = '../recomendation/train_test/Foursquare/JP_Tokyo/JP_Tokyo_train.txt'
+# train_ny_gow = '../recomendation/train_test/Gowalla/JP_Tokyo/JP_Tokyo_train.txt'
 
 
-recomendationPOPGow = '../recomendation/users_recomendations/Gowalla/Popularity/TK_Top50_RepeatedScoreTrue.txt'
-recomendationPOPFour = '../recomendation/users_recomendations/Foursquare/Popularity/TK_Top50_RepeatedScoreTrue.txt'
+# recomendationPOPGow = '../recomendation/users_recomendations/Gowalla/Popularity/TK_Top50_RepeatedScoreTrue.txt'
+# recomendationPOPFour = '../recomendation/users_recomendations/Foursquare/Popularity/TK_Top50_RepeatedScoreTrue.txt'
 
-recomendationKNNGow = '../recomendation/users_recomendations/Gowalla/Knn/TK_Top50_Knn50.txt'
-recomendationKNNFour = '../recomendation/users_recomendations/Foursquare/Knn/TK_Top50_Knn50.txt'
+# recomendationKNNGow = '../recomendation/users_recomendations/Gowalla/Knn/TK_Top50_Knn50.txt'
+# recomendationKNNFour = '../recomendation/users_recomendations/Foursquare/Knn/TK_Top50_Knn50.txt'
 
-recomendationHYBRIDGow = '../recomendation/users_recomendations/Gowalla/Hybrid/TK_Top50_knn50.txt'
-recomendationHYBRIDFour = '../recomendation/users_recomendations/Foursquare/Hybrid/TK_Top50_knn50.txt'
+# recomendationHYBRIDGow = '../recomendation/users_recomendations/Gowalla/Hybrid/TK_Top50_knn50.txt'
+# recomendationHYBRIDFour = '../recomendation/users_recomendations/Foursquare/Hybrid/TK_Top50_knn50.txt'
 
-recomendationRANDOMGow = '../recomendation/users_recomendations/Gowalla/Random/TK_50.txt'
-recomendationRANDOMFour = '../recomendation/users_recomendations/Foursquare/Random/TK_50.txt'
+# recomendationRANDOMGow = '../recomendation/users_recomendations/Gowalla/Random/TK_50.txt'
+# recomendationRANDOMFour = '../recomendation/users_recomendations/Foursquare/Random/TK_50.txt'
 
-recomendationSKYLINEGow = '../recomendation/users_recomendations/Gowalla/Skyline/TK_Skyline.txt'
-recomendationSKYLINEFour = '../recomendation/users_recomendations/Foursquare/Skyline/TK_Skyline.txt'
+# recomendationSKYLINEGow = '../recomendation/users_recomendations/Gowalla/Skyline/TK_Skyline.txt'
+# recomendationSKYLINEFour = '../recomendation/users_recomendations/Foursquare/Skyline/TK_Skyline.txt'
 
 
-cutoff = 10
+cutoff = 40
 
 print('Precision:')
 

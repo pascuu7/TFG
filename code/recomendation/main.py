@@ -6,11 +6,11 @@ from skyline.skyline import skyline
 
 # FOURSQUARE
 
-train_ny = 'train_test/Gowalla/US_NewYork/US_NewYork_train.txt'
-train_tk = 'train_test/Gowalla/JP_Tokyo/JP_Tokyo_train.txt'
+# train_ny = 'train_test/Foursquare/US_NewYork/US_NewYork_train.txt'
+# train_tk = 'train_test/Foursquare/JP_Tokyo/JP_Tokyo_train.txt'
 
-test_ny = 'train_test/Gowalla/US_NewYork/US_NewYork_test.txt'
-test_tk = 'train_test/Gowalla/JP_Tokyo/JP_Tokyo_test.txt'
+# test_ny = 'train_test/Foursquare/US_NewYork/US_NewYork_test.txt'
+# test_tk = 'train_test/Foursquare/JP_Tokyo/JP_Tokyo_test.txt'
 
 
 # GOWALLA + FOURSQUARE
@@ -56,13 +56,13 @@ test_tk = 'train_test/Gowalla/JP_Tokyo/JP_Tokyo_test.txt'
 
 # HYBRID
 
-poi_file = '../dataset/POI_city.txt'
+# poi_file = '../dataset/POI_city.txt'
 
-# fout_ny_hybrid = 'users_recomendations/Gowalla/Hybrid/NY_Top50_knn50.txt'
-fout_tk_hybrid = 'users_recomendations/Gowalla/Hybrid/TK_Top50_knn100.txt'
+# # fout_ny_hybrid = 'users_recomendations/Gowalla/Hybrid/NY_Top50_knn50.txt'
+# fout_tk_hybrid = 'users_recomendations/Gowalla/Hybrid/TK_Top50_knn100.txt'
 
-# hybrid_ny = hybrid(poi_file, train_ny, test_ny, fout_ny_hybrid, 50)
-hybrid_tk = hybrid(poi_file, train_tk, test_tk, fout_tk_hybrid, 100)
+# # hybrid_ny = hybrid(poi_file, train_ny, test_ny, fout_ny_hybrid, 50)
+# hybrid_tk = hybrid(poi_file, train_tk, test_tk, fout_tk_hybrid, 100)
 
 
 
