@@ -1,0 +1,3 @@
+Tokyo	35.683002	139.809007	JP	Japan	National and provincial capital
+New York	40.707864	-73.905237	US	United States	Other
+San Francisco	37.795815	-122.380092	US	United States	Other

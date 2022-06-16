@@ -131,27 +131,48 @@ dmypy.json
 otros
 documentacion
 
-code/dataset/Gowalla/city_checkins
-code/dataset/Gowalla/city_coordinates.txt
-code/dataset/Gowalla/Gowalla_totalCheckins.txt
-code/dataset/Gowalla/POI_city.txt
+dataset/city_checkins
 
-code/dataset/Foursquare/city_checkins
-code/dataset/Foursquare/dataset
-code/dataset/Foursquare/user_ratings
-code/dataset/Foursquare/POI_city.txt
+dataset/coincidencias/coincidencias_pois.txt
+dataset/coincidencias/coincidencias_users.txt
 
-code/dataset/coincidencias/coincidencias_pois.txt
-code/dataset/coincidencias/coincidencias_users.txt
+dataset/Foursquare/city_checkins
+dataset/Foursquare/dataset
+dataset/Foursquare/user_ratings
+dataset/Foursquare/POI_city.txt
 
-code/dataset/user_ratings
+dataset/Gowalla/city_checkins
+dataset/Gowalla/Gowalla_totalCheckins.txt
+dataset/Gowalla/POI_city.txt
 
-code/dataset/city_checkins
+dataset/user_ratings
+dataset/POI_city.txt
 
-code/dataset/POI_city.txt
+recomendation/dataset_pruebas
 
-code/recomendation/train_test
+recomendation/train_test/Foursquare/JP_Tokyo
+recomendation/train_test/Foursquare/US_NewYork
+recomendation/train_test/Foursquare/US_SanFrancisco
 
+recomendation/train_test/Gowalla/JP_Tokyo
+recomendation/train_test/Gowalla/US_NewYork
+recomendation/train_test/Gowalla/US_SanFrancisco
+
+recomendation/users_recomendations/Foursquare/Hybrid
+recomendation/users_recomendations/Foursquare/Knn
+recomendation/users_recomendations/Foursquare/Popularity
+recomendation/users_recomendations/Foursquare/Random
+recomendation/users_recomendations/Foursquare/Skyline
+
+recomendation/users_recomendations/Gowalla/Hybrid
+recomendation/users_recomendations/Gowalla/Knn
+recomendation/users_recomendations/Gowalla/Popularity
+recomendation/users_recomendations/Gowalla/Random
+recomendation/users_recomendations/Gowalla/Skyline
+
+segunda_parte
+tercera_parte
+Gowalla_ratings
 
 
 
