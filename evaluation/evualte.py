@@ -4,180 +4,139 @@ from recall import recall
 from diversity import diversity
 from expected_popularity import expected_popularity
 
-# NEW YORK
+import sys
 
-# test_ny = '../recomendation/train_test/Gowalla/US_NewYork/US_NewYork_test.txt'
-# train_ny_four = '../recomendation/train_test/Foursquare/US_NewYork/US_NewYork_train.txt'
-# train_ny_gow = '../recomendation/train_test/Gowalla/US_NewYork/US_NewYork_train.txt'
+if __name__ == "__main__":
 
-# recomendationPOPGow = '../recomendation/users_recomendations/Gowalla/Popularity/NY_Top50_RepeatedScoreFalse.txt'
-# recomendationPOPFour = '../recomendation/users_recomendations/Foursquare/Popularity/NY_Top50_RepeatedScoreFalse.txt'
+    test = '../segunda_parte/recomendation/train_test/Gowalla/' + sys.argv[1] + '/' + sys.argv[1] + '_test.txt'
+    train_four = '../segunda_parte/recomendation/train_test/Foursquare/' + sys.argv[1] + '/' + sys.argv[1] + '_train.txt'
+    train_gow = '../segunda_parte/recomendation/train_test/Gowalla/' + sys.argv[1] + '/' + sys.argv[1] + '_train.txt'
 
-# recomendationKNNGow = '../recomendation/users_recomendations/Gowalla/Knn/NY_Top50_Knn100.txt'
-# recomendationKNNFour = '../recomendation/users_recomendations/Foursquare/Knn/NY_Top50_Knn100.txt'
+    if sys.argv[1] == "US_SanFrancisco":
+        pre = 'SF'
 
-# recomendationHYBRIDGow = '../recomendation/users_recomendations/Gowalla/Hybrid/NY_Top50_knn100.txt'
-# recomendationHYBRIDFour = '../recomendation/users_recomendations/Foursquare/Hybrid/NY_Top50_knn100.txt'
+    elif sys.argv[1] == "US_NewYork":
+        pre = 'NY'
 
-# recomendationRANDOMGow = '../recomendation/users_recomendations/Gowalla/Random/NY_50.txt'
-# recomendationRANDOMFour = '../recomendation/users_recomendations/Foursquare/Random/NY_50.txt'
+    else:
+        pre = 'TK'
 
-# recomendationSKYLINEGow = '../recomendation/users_recomendations/Gowalla/Skyline/NY_Skyline.txt'
-# recomendationSKYLINEFour = '../recomendation/users_recomendations/Foursquare/Skyline/NY_Skyline.txt'
+    recomendationPOPGow = '../segunda_parte/recomendation/users_recomendations/Gowalla/Popularity/' + pre + '_Top50_RepeatedScore' + sys.argv[2] + '.txt'
+    recomendationPOPFour = '../segunda_parte/recomendation/users_recomendations/Foursquare/Popularity/' + pre + '_Top50_RepeatedScore' + sys.argv[2] + '.txt'
 
+    recomendationKNNGow = '../segunda_parte/recomendation/users_recomendations/Gowalla/Knn/' + pre + '_Top50_Knn' + sys.argv[3] + '.txt'
+    recomendationKNNFour = '../segunda_parte/recomendation/users_recomendations/Foursquare/Knn/' + pre + '_Top50_Knn' + sys.argv[3] + '.txt'
 
+    recomendationHYBRIDGow = '../segunda_parte/recomendation/users_recomendations/Gowalla/Hybrid/' + pre + '_Top50_knn' + sys.argv[3] + '.txt'
+    recomendationHYBRIDFour = '../segunda_parte/recomendation/users_recomendations/Foursquare/Hybrid/' + pre + '_Top50_knn' + sys.argv[3] + '.txt'
 
-# TOKYO
+    recomendationRANDOMGow = '../segunda_parte/recomendation/users_recomendations/Gowalla/Random/' + pre + '_50.txt'
+    recomendationRANDOMFour = '../segunda_parte/recomendation/users_recomendations/Foursquare/Random/' + pre + '_50.txt'
 
-# test_ny = '../recomendation/train_test/Gowalla/JP_Tokyo/JP_Tokyo_test.txt'
-# train_ny_four = '../recomendation/train_test/Foursquare/JP_Tokyo/JP_Tokyo_train.txt'
-# train_ny_gow = '../recomendation/train_test/Gowalla/JP_Tokyo/JP_Tokyo_train.txt'
+    recomendationSKYLINEGow = '../segunda_parte/recomendation/users_recomendations/Gowalla/Skyline/' + pre + '_Skyline.txt'
+    recomendationSKYLINEFour = '../segunda_parte/recomendation/users_recomendations/Foursquare/Skyline/' + pre + '_Skyline.txt'
 
-# recomendationPOPGow = '../recomendation/users_recomendations/Gowalla/Popularity/TK_Top50_RepeatedScoreFalse.txt'
-# recomendationPOPFour = '../recomendation/users_recomendations/Foursquare/Popularity/TK_Top50_RepeatedScoreFalse.txt'
 
-# recomendationKNNGow = '../recomendation/users_recomendations/Gowalla/Knn/TK_Top50_Knn100.txt'
-# recomendationKNNFour = '../recomendation/users_recomendations/Foursquare/Knn/TK_Top50_Knn100.txt'
+    cutoff = sys.argv[4]
 
-# recomendationHYBRIDGow = '../recomendation/users_recomendations/Gowalla/Hybrid/TK_Top50_knn100.txt'
-# recomendationHYBRIDFour = '../recomendation/users_recomendations/Foursquare/Hybrid/TK_Top50_knn100.txt'
+    print('Precision:')
 
-# recomendationRANDOMGow = '../recomendation/users_recomendations/Gowalla/Random/TK_50.txt'
-# recomendationRANDOMFour = '../recomendation/users_recomendations/Foursquare/Random/TK_50.txt'
+    print(' Foursquare')
 
-# recomendationSKYLINEGow = '../recomendation/users_recomendations/Gowalla/Skyline/TK_Skyline.txt'
-# recomendationSKYLINEFour = '../recomendation/users_recomendations/Foursquare/Skyline/TK_Skyline.txt'
+    precision('Random', recomendationRANDOMFour, test, cutoff)
+    precision('Skyline', recomendationSKYLINEFour, test, cutoff)
+    precision('Popularity', recomendationPOPFour, test, cutoff)
+    precision('Knn', recomendationKNNFour, test, cutoff)
+    precision('Hybrid', recomendationHYBRIDFour, test, cutoff)
 
-# SAN FRANCISCO
+    print(' Gowalla:')
 
-test_ny = '../segunda_parte/recomendation/train_test/Gowalla/US_SanFrancisco/US_SanFrancisco_test.txt'
-train_ny_four = '../segunda_parte/recomendation/train_test/Foursquare/US_SanFrancisco/US_SanFrancisco_train.txt'
-train_ny_gow = '../segunda_parte/recomendation/train_test/Gowalla/US_SanFrancisco/US_SanFrancisco_train.txt'
+    precision('Random', recomendationRANDOMGow, test, cutoff)
+    precision('Skyline', recomendationSKYLINEGow, test, cutoff)
+    precision('Popularity', recomendationPOPGow, test, cutoff)
+    precision('Knn', recomendationKNNGow, test, cutoff)
+    precision('Hybrid', recomendationHYBRIDGow, test, cutoff)
 
-recomendationPOPGow = '../segunda_parte/recomendation/users_recomendations/Gowalla/Popularity/SF_Top50_RepeatedScoreFalse.txt'
-recomendationPOPFour = '../segunda_parte/recomendation/users_recomendations/Foursquare/Popularity/SF_Top50_RepeatedScoreFalse.txt'
+    print('\n')
 
-recomendationKNNGow = '../segunda_parte/recomendation/users_recomendations/Gowalla/Knn/SF_Top50_Knn100.txt'
-recomendationKNNFour = '../segunda_parte/recomendation/users_recomendations/Foursquare/Knn/SF_Top50_Knn100.txt'
 
-recomendationHYBRIDGow = '../segunda_parte/recomendation/users_recomendations/Gowalla/Hybrid/SF_Top50_knn100.txt'
-recomendationHYBRIDFour = '../segunda_parte/recomendation/users_recomendations/Foursquare/Hybrid/SF_Top50_knn100.txt'
+    print('Recall:')
 
-recomendationRANDOMGow = '../segunda_parte/recomendation/users_recomendations/Gowalla/Random/SF_50.txt'
-recomendationRANDOMFour = '../segunda_parte/recomendation/users_recomendations/Foursquare/Random/SF_50.txt'
+    print(' Foursquare')
 
-recomendationSKYLINEGow = '../segunda_parte/recomendation/users_recomendations/Gowalla/Skyline/SF_Skyline.txt'
-recomendationSKYLINEFour = '../segunda_parte/recomendation/users_recomendations/Foursquare/Skyline/SF_Skyline.txt'
+    recall('Random', recomendationRANDOMFour, test, cutoff)
+    recall('Skyline', recomendationSKYLINEFour, test, cutoff)
+    recall('Popularity', recomendationPOPFour, test, cutoff)
+    recall('Knn', recomendationKNNFour, test, cutoff)
+    recall('Hybrid', recomendationHYBRIDFour, test, cutoff)
 
+    print(' Gowalla:')
 
-cutoff = 10
+    recall('Random', recomendationRANDOMGow, test, cutoff)
+    recall('Skyline', recomendationSKYLINEGow, test, cutoff)
+    recall('Popularity', recomendationPOPGow, test, cutoff)
+    recall('Knn', recomendationKNNGow, test, cutoff)
+    recall('Hybrid', recomendationHYBRIDGow, test, cutoff)
 
-print('Precision:')
+    print('\n')
 
-print(' Foursquare')
 
-precision('Random', recomendationRANDOMFour, test_ny, cutoff)
-precision('Skyline', recomendationSKYLINEFour, test_ny, cutoff)
-precision('Popularity', recomendationPOPFour, test_ny, cutoff)
-precision('Knn', recomendationKNNFour, test_ny, cutoff)
-precision('Hybrid', recomendationHYBRIDFour, test_ny, cutoff)
+    print('Expected popularity:')
 
-print(' Gowalla:')
+    print(' Foursquare')
 
-precision('Random', recomendationRANDOMGow, test_ny, cutoff)
-precision('Skyline', recomendationSKYLINEGow, test_ny, cutoff)
-precision('Popularity', recomendationPOPGow, test_ny, cutoff)
-precision('Knn', recomendationKNNGow, test_ny, cutoff)
-precision('Hybrid', recomendationHYBRIDGow, test_ny, cutoff)
+    expected_popularity('Random', recomendationRANDOMFour, test, train_four, cutoff)
+    expected_popularity('Skyline', recomendationSKYLINEFour, test, train_four, cutoff)
+    expected_popularity('Popularity', recomendationPOPFour, test, train_four, cutoff)
+    expected_popularity('Knn', recomendationKNNFour, test, train_four, cutoff)
+    expected_popularity('Hybrid', recomendationHYBRIDFour, test, train_four, cutoff)
 
-print('\n')
+    print(' Gowalla:')
 
+    expected_popularity('Random', recomendationRANDOMGow, test, train_four, cutoff)
+    expected_popularity('Skyline', recomendationSKYLINEGow, test, train_four, cutoff)
+    expected_popularity('Popularity', recomendationPOPGow, test, train_four, cutoff)
+    expected_popularity('Knn', recomendationKNNGow, test, train_four, cutoff)
+    expected_popularity('Hybrid', recomendationHYBRIDGow, test, train_four, cutoff)
 
+    print('\n')
 
 
-print('Recall:')
+    print('Aggregate diversity:')
 
-print(' Foursquare')
+    print(' Foursquare')
 
-recall('Random', recomendationRANDOMFour, test_ny, cutoff)
-recall('Skyline', recomendationSKYLINEFour, test_ny, cutoff)
-recall('Popularity', recomendationPOPFour, test_ny, cutoff)
-recall('Knn', recomendationKNNFour, test_ny, cutoff)
-recall('Hybrid', recomendationHYBRIDFour, test_ny, cutoff)
+    diversity('Random', recomendationRANDOMFour)
+    diversity('Skyline', recomendationSKYLINEFour)
+    diversity('Popularity', recomendationPOPFour)
+    diversity('Knn', recomendationKNNFour)
+    diversity('Hybrid', recomendationHYBRIDFour)
 
-print(' Gowalla:')
+    print(' Gowalla:')
 
-recall('Random', recomendationRANDOMGow, test_ny, cutoff)
-recall('Skyline', recomendationSKYLINEGow, test_ny, cutoff)
-recall('Popularity', recomendationPOPGow, test_ny, cutoff)
-recall('Knn', recomendationKNNGow, test_ny, cutoff)
-recall('Hybrid', recomendationHYBRIDGow, test_ny, cutoff)
+    diversity('Random', recomendationRANDOMGow)
+    diversity('Skyline', recomendationSKYLINEGow)
+    diversity('Popularity', recomendationPOPGow)
+    diversity('Knn', recomendationKNNGow)
+    diversity('Hybrid', recomendationHYBRIDGow)
 
-print('\n')
+    print('\n')
 
 
+    print('Coverage:')
 
+    print(' Foursquare')
 
-print('Expected popularity:')
+    cover('Random', recomendationRANDOMFour)
+    cover('Skyline', recomendationSKYLINEFour)
+    cover('Popularity', recomendationPOPFour)
+    cover('Knn', recomendationKNNFour)
+    cover('Hybrid', recomendationHYBRIDFour)
 
-print(' Foursquare')
+    print(' Gowalla:')
 
-expected_popularity('Random', recomendationRANDOMFour, test_ny, train_ny_four, cutoff)
-expected_popularity('Skyline', recomendationSKYLINEFour, test_ny, train_ny_four, cutoff)
-expected_popularity('Popularity', recomendationPOPFour, test_ny, train_ny_four, cutoff)
-expected_popularity('Knn', recomendationKNNFour, test_ny, train_ny_four, cutoff)
-expected_popularity('Hybrid', recomendationHYBRIDFour, test_ny, train_ny_four, cutoff)
-
-print(' Gowalla:')
-
-expected_popularity('Random', recomendationRANDOMGow, test_ny, train_ny_gow, cutoff)
-expected_popularity('Skyline', recomendationSKYLINEGow, test_ny, train_ny_gow, cutoff)
-expected_popularity('Popularity', recomendationPOPGow, test_ny, train_ny_gow, cutoff)
-expected_popularity('Knn', recomendationKNNGow, test_ny, train_ny_gow, cutoff)
-expected_popularity('Hybrid', recomendationHYBRIDGow, test_ny, train_ny_gow, cutoff)
-
-print('\n')
-
-
-
-
-print('Aggregate diversity:')
-
-print(' Foursquare')
-
-diversity('Random', recomendationRANDOMFour)
-diversity('Skyline', recomendationSKYLINEFour)
-diversity('Popularity', recomendationPOPFour)
-diversity('Knn', recomendationKNNFour)
-diversity('Hybrid', recomendationHYBRIDFour)
-
-print(' Gowalla:')
-
-diversity('Random', recomendationRANDOMGow)
-diversity('Skyline', recomendationSKYLINEGow)
-diversity('Popularity', recomendationPOPGow)
-diversity('Knn', recomendationKNNGow)
-diversity('Hybrid', recomendationHYBRIDGow)
-
-print('\n')
-
-
-
-
-print('Coverage:')
-
-print(' Foursquare')
-
-cover('Random', recomendationRANDOMFour)
-cover('Skyline', recomendationSKYLINEFour)
-cover('Popularity', recomendationPOPFour)
-cover('Knn', recomendationKNNFour)
-cover('Hybrid', recomendationHYBRIDFour)
-
-print(' Gowalla:')
-
-cover('Random', recomendationRANDOMGow)
-cover('Skyline', recomendationSKYLINEGow)
-cover('Popularity', recomendationPOPGow)
-cover('Knn', recomendationKNNGow)
-cover('Hybrid', recomendationHYBRIDGow)
+    cover('Random', recomendationRANDOMGow)
+    cover('Skyline', recomendationSKYLINEGow)
+    cover('Popularity', recomendationPOPGow)
+    cover('Knn', recomendationKNNGow)
+    cover('Hybrid', recomendationHYBRIDGow)

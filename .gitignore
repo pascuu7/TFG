@@ -131,21 +131,21 @@ dmypy.json
 otros
 documentacion
 
-dataset/city_checkins
+dataset/city_checkins/
 
 dataset/coincidencias/coincidencias_pois.txt
 dataset/coincidencias/coincidencias_users.txt
 
-dataset/Foursquare/city_checkins
-dataset/Foursquare/dataset
-dataset/Foursquare/user_ratings
+dataset/Foursquare/city_checkins/
+dataset/Foursquare/dataset/
+dataset/Foursquare/user_ratings/
 dataset/Foursquare/POI_city.txt
 
 dataset/Gowalla/city_checkins
 dataset/Gowalla/Gowalla_totalCheckins.txt
 dataset/Gowalla/POI_city.txt
 
-dataset/user_ratings
+dataset/user_ratings/
 dataset/POI_city.txt
 
 recomendation/dataset_pruebas
@@ -173,6 +173,7 @@ recomendation/users_recomendations/Gowalla/Skyline
 segunda_parte
 tercera_parte
 Gowalla_ratings
+prueba.py
 
 
 

@@ -47,9 +47,9 @@ def data_prepare_pop(ftrain, repeated = False):
                 # si no lo hemos visitado lo guardamos
                 else:
                     rating[int(split[1])] = 1
-        
+
+    # ordenamos según el score
     sorted = sort_recomendations(rating)
-    
     train.close()
 
     return sorted
@@ -60,27 +60,53 @@ def all_users_pop(user, out, sorted):
     else:
         user_pois = set()
 
+    # escogemos los 50 primeros pois
     recomended = fifty_pois(sorted, user_pois)
 
+    # escribimos las recomendaciones
     write_recomendations(recomended, user, out)
 
-
-
-
 def popularity(ftrain, ftest, repeated = False, out = None):
-    
-    
     sorted = data_prepare_pop(ftrain, repeated)
     users = read_users(ftest)
 
-    i = 0
-
     for user in users:
-        i += 1
-        print(i)
         all_users_pop(user, out, sorted)
         
 
-        # fin = time.time()
-        # print('Recomended: ' ,(fin-inicio)*11000, '\n\n')
-        
+if __name__ == "__main__":
+    # Dataset de Foursquare
+    train_ny_f = 'train_test/Foursquare/US_NewYork/US_NewYork_train.txt'
+    train_tk_f = 'train_test/Foursquare/JP_Tokyo/JP_Tokyo_train.txt'
+    train_sf_f = 'train_test/Foursquare/US_SanFrancisco/US_SanFrancisco_train.txt'
+
+    # Dataset de Foursquare + Gowalla
+    train_ny_g = 'train_test/Gowalla/US_NewYork/US_NewYork_train.txt'
+    train_tk_g = 'train_test/Gowalla/JP_Tokyo/JP_Tokyo_train.txt'
+    train_sf_g = 'train_test/Gowalla/US_SanFrancisco/US_SanFrancisco_train.txt'
+
+    # Test (al ser el mismo es indiferente)
+    test_ny = 'train_test/Gowalla/US_NewYork/US_NewYork_test.txt'
+    test_tk = 'train_test/Gowalla/JP_Tokyo/JP_Tokyo_test.txt'
+    test_sf = 'train_test/Gowalla/US_SanFrancisco/US_SanFrancisco_test.txt'
+
+    fout_ny_pop_f = 'users_recomendations/Foursquare/Popularity/NY_Top50_RepeatedScore' + sys.argv[1] + '.txt'
+    fout_tk_pop_f = 'users_recomendations/Foursquare/Popularity/TK_Top50_RepeatedScore' + sys.argv[1] + '.txt'
+    fout_sf_pop_f = 'users_recomendations/Foursquare/Popularity/SF_Top50_RepeatedScore' + sys.argv[1] + '.txt'
+
+    fout_ny_pop_g = 'users_recomendations/Gowalla/Popularity/NY_Top50_RepeatedScore' + sys.argv[1] + '.txt'
+    fout_tk_pop_g = 'users_recomendations/Gowalla/Popularity/TK_Top50_RepeatedScore' + sys.argv[1] + '.txt'
+    fout_sf_pop_g = 'users_recomendations/Gowalla/Popularity/SF_Top50_RepeatedScore' + sys.argv[1] + '.txt'
+
+    if sys.argv[1] == 'True':
+        repeated = True
+    else:
+        repeated = False
+
+    popularity(train_ny_f, test_ny, out=fout_ny_pop_f, repeated=repeated)
+    popularity(train_tk_f, test_tk, out=fout_tk_pop_f, repeated=repeated)
+    popularity(train_sf_f, test_sf, out=fout_sf_pop_f, repeated=repeated)
+
+    popularity(train_ny_g, test_ny, out=fout_ny_pop_g, repeated=repeated)
+    popularity(train_tk_g, test_tk, out=fout_tk_pop_g, repeated=repeated)
+    popularity(train_sf_g, test_sf, out=fout_sf_pop_g, repeated=repeated)

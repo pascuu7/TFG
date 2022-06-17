@@ -51,22 +51,22 @@
 #     fichero.close()
 #     # ciudades[name] = len(fichero.readlines())
 
-file = 'recomendation/train_test/Foursquare/JP_Tokyo/JP_Tokyo_test.txt'
+# file = 'recomendation/train_test/Foursquare/JP_Tokyo/JP_Tokyo_test.txt'
 
-users = set()
+# users = set()
 
 
-with open(file) as test:
-    i = 0
-    for line in test:
-        i += 1
-        # print(i)
-        split = line.split("\t")
-        # 0: user
-        # 1: poi
-        # 2: timestamp
-        # 3: rating
+# with open(file) as test:
+#     i = 0
+#     for line in test:
+#         i += 1
+#         # print(i)
+#         split = line.split("\t")
+#         # 0: user
+#         # 1: poi
+#         # 2: timestamp
+#         # 3: rating
 
-        users.add(int(split[0]))
+#         users.add(int(split[0]))
 
-print(len(users))
+# print(len(users))
