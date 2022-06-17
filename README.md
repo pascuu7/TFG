@@ -43,7 +43,7 @@ Recomendar cada algoritmo por separando escogiendo los parámetros:
 
 Evaluación:
 1. `cd ../evaluation/`
-2. `python3 evaluate.py ciudad repeated knn` (repeateden cuanto a ciudad, repeated y knn es lo mismo que se ha indicado en la recomenación)
+2. `python3 evaluate.py ciudad repeated knn` (ciudad, repeated y knn es lo mismo que se ha indicado en la recomenación)
 
 
 
