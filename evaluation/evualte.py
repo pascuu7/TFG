@@ -37,7 +37,7 @@ if __name__ == "__main__":
     recomendationSKYLINEFour = '../recomendation/users_recomendations/Foursquare/Skyline/' + pre + '_Skyline.txt'
 
 
-    cutoff = int(sys.argv[4])
+    cutoff = 10
 
     print('Precision:')
 

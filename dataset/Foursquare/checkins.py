@@ -20,7 +20,7 @@ with open('POI_city.txt') as fpois:
 
         poi_dic[str(split_pois[1])] = split_pois[4].strip() + '\t' + split_pois[0]
 
-with open('dataset/checkins.txt') as fcheck:
+with open('dataset/dataset_TIST2015_Checkins.txt') as fcheck:
     for line_check in fcheck:
         split_check = line_check.split("\t")
         # 0: id usuario

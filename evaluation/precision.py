@@ -7,8 +7,7 @@ def precision(tipo, recomendations, test, cutoff):
             # 0: id user
             # 1: id poi
             # 2: rating (menos random y skyline)
-
-            
+  
             if int(split[0]) not in recomended:
                 recomended[int(split[0])] = set([int(split[1])])
 
@@ -32,7 +31,7 @@ def precision(tipo, recomendations, test, cutoff):
 
     eval = 0
     for user in recomended:
-        eval += len(recomended[user] & visited[user])/len(recomended[user])
+        eval += len(recomended[user] & visited[user])/cutoff
 
     print('\t', tipo, ':', eval / len(recomended))
 

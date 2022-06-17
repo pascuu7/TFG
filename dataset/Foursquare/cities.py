@@ -12,7 +12,7 @@ city_pois = open('POI_city.txt', 'w')  # fichero a escribir
 # diccionarios con pois de cada país
 cities = {}  # codigo_pais: (ciudad1, latitud1, longitud1), (ciudad2, latitud2, longitud2)...
 
-with open("dataset/cities.txt") as fcities:
+with open("dataset/dataset_TIST2015_Cities.txt") as fcities:
     for line_city in fcities:
         split_city = line_city.split("\t")
         # 0: nombre ciudad
@@ -34,7 +34,7 @@ with open("dataset/cities.txt") as fcities:
 
 # id de los pois
 i = 0
-with open("dataset/POIs.txt") as fpois:
+with open("dataset/dataset_TIST2015_POIs.txt") as fpois:
     for line_poi in fpois:
         min_dist = 6371  # distancia maxima posible en la tierra
 
