@@ -145,35 +145,26 @@ def hybrid(poi_file, ftrain, ftest, out, k):
         write_recomendations(recomended, user, out)
 
 if __name__ == "__main__":
-        # Dataset de Foursquare
-    train_ny_f = 'train_test/Foursquare/US_NewYork/US_NewYork_train.txt'
-    train_tk_f = 'train_test/Foursquare/JP_Tokyo/JP_Tokyo_train.txt'
-    train_sf_f = 'train_test/Foursquare/US_SanFrancisco/US_SanFrancisco_train.txt'
+    # guardamos los ficheros train de cada aplicación y test según la ciudad que se indique
+    train_f = 'train_test/Foursquare/' + sys.argv[1] + '/' + sys.argv[1] + '_train.txt'
+    train_g = 'train_test/Gowalla/' + sys.argv[1] + '/' + sys.argv[1] + '_train.txt'
+    test = 'train_test/Gowalla/' + sys.argv[1] + '/' + sys.argv[1] + '_test.txt'
 
-    # Dataset de Foursquare + Gowalla
-    train_ny_g = 'train_test/Gowalla/US_NewYork/US_NewYork_train.txt'
-    train_tk_g = 'train_test/Gowalla/JP_Tokyo/JP_Tokyo_train.txt'
-    train_sf_g = 'train_test/Gowalla/US_SanFrancisco/US_SanFrancisco_train.txt'
+    # guardamos en pre el prefijo del país que se indique
+    if sys.argv[1] == "US_SanFrancisco":
+        pre = 'SF'
 
-    # Test (al ser el mismo es indiferente)
-    test_ny = 'train_test/Gowalla/US_NewYork/US_NewYork_test.txt'
-    test_tk = 'train_test/Gowalla/JP_Tokyo/JP_Tokyo_test.txt'
-    test_sf = 'train_test/Gowalla/US_SanFrancisco/US_SanFrancisco_test.txt'
+    elif sys.argv[1] == "US_NewYork":
+        pre = 'NY'
+
+    else:
+        pre = 'TK'
 
     poi_file = '../dataset/POI_city.txt'
 
-    fout_ny_hybrid_f = 'users_recomendations/Foursquare/Hybrid/NY_Top50_knn' + sys.argv[1] + '.txt'
-    fout_tk_hybrid_f = 'users_recomendations/Foursquare/Hybrid/TK_Top50_knn' + sys.argv[1] + '.txt'
-    fout_sf_hybrid_f = 'users_recomendations/Foursquare/Hybrid/SF_Top50_knn' + sys.argv[1] + '.txt'
+    # ficheros de salida con las recomendaciones
+    fout_hybrid_f = 'users_recomendations/Foursquare/Hybrid/' + pre + '_Top50_knn' + sys.argv[2] + '.txt'
+    fout_hybrid_g = 'users_recomendations/Gowalla/Hybrid/' + pre + '_Top50_knn' + sys.argv[2] + '.txt'
 
-    fout_ny_hybrid_g = 'users_recomendations/Gowalla/Hybrid/NY_Top50_knn' + sys.argv[1] + '.txt'
-    fout_tk_hybrid_g = 'users_recomendations/Gowalla/Hybrid/TK_Top50_knn' + sys.argv[1] + '.txt'
-    fout_sf_hybrid_g = 'users_recomendations/Gowalla/Hybrid/SF_Top50_knn' + sys.argv[1] + '.txt'
-
-    hybrid(poi_file, train_ny_f, test_ny, fout_ny_hybrid_f, sys.argv[1])
-    hybrid(poi_file, train_tk_f, test_tk, fout_tk_hybrid_f, sys.argv[1])
-    hybrid(poi_file, train_sf_f, test_sf, fout_sf_hybrid_f, sys.argv[1])
-
-    hybrid(poi_file, train_ny_g, test_ny, fout_ny_hybrid_g, sys.argv[1])
-    hybrid(poi_file, train_tk_g, test_tk, fout_tk_hybrid_g, sys.argv[1])
-    hybrid(poi_file, train_sf_g, test_sf, fout_sf_hybrid_g, sys.argv[1])
+    hybrid(poi_file, train_f, test, fout_hybrid_f, sys.argv[2])
+    hybrid(poi_file, train_g, test, fout_hybrid_g, sys.argv[2])

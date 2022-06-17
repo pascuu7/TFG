@@ -40,33 +40,24 @@ def rand(ftrain, ftest, out):
 
 
 if __name__ == "__main__":
-        # Dataset de Foursquare
-    train_ny_f = 'train_test/Foursquare/US_NewYork/US_NewYork_train.txt'
-    train_tk_f = 'train_test/Foursquare/JP_Tokyo/JP_Tokyo_train.txt'
-    train_sf_f = 'train_test/Foursquare/US_SanFrancisco/US_SanFrancisco_train.txt'
+    # guardamos los ficheros train de cada aplicación y test según la ciudad que se indique
+    train_f = 'train_test/Foursquare/' + sys.argv[1] + '/' + sys.argv[1] + '_train.txt'
+    train_g = 'train_test/Gowalla/' + sys.argv[1] + '/' + sys.argv[1] + '_train.txt'
+    test = 'train_test/Gowalla/' + sys.argv[1] + '/' + sys.argv[1] + '_test.txt'
 
-    # Dataset de Foursquare + Gowalla
-    train_ny_g = 'train_test/Gowalla/US_NewYork/US_NewYork_train.txt'
-    train_tk_g = 'train_test/Gowalla/JP_Tokyo/JP_Tokyo_train.txt'
-    train_sf_g = 'train_test/Gowalla/US_SanFrancisco/US_SanFrancisco_train.txt'
+    # guardamos en pre el prefijo del país que se indique
+    if sys.argv[1] == "US_SanFrancisco":
+        pre = 'SF'
 
-    # Test (al ser el mismo es indiferente)
-    test_ny = 'train_test/Gowalla/US_NewYork/US_NewYork_test.txt'
-    test_tk = 'train_test/Gowalla/JP_Tokyo/JP_Tokyo_test.txt'
-    test_sf = 'train_test/Gowalla/US_SanFrancisco/US_SanFrancisco_test.txt'
+    elif sys.argv[1] == "US_NewYork":
+        pre = 'NY'
 
-    fout_ny_random_f = 'users_recomendations/Gowalla/Random/NY_50.txt'
-    fout_tk_random_f = 'users_recomendations/Gowalla/Random/TK_50.txt'
-    fout_sf_random_f = 'users_recomendations/Gowalla/Random/SF_50.txt'
+    else:
+        pre = 'TK'
 
-    fout_ny_random_g = 'users_recomendations/Gowalla/Random/NY_50.txt'
-    fout_tk_random_g = 'users_recomendations/Gowalla/Random/TK_50.txt'
-    fout_sf_random_g = 'users_recomendations/Gowalla/Random/SF_50.txt'
+    # ficheros de salida con las recomendaciones
+    fout_random_f = 'users_recomendations/Foursquare/Random/' + pre + '_50.txt'
+    fout_random_g = 'users_recomendations/Gowalla/Random/' + pre + '_50.txt'
 
-    random_ny_f = rand(train_ny_f, test_ny, fout_ny_random_f)
-    random_tk_f = rand(train_tk_f, test_tk, fout_tk_random_f)
-    random_tk_f = rand(train_sf_f, test_sf, fout_sf_random_f)
-
-    random_ny_g = rand(train_ny_g, test_ny, fout_ny_random_g)
-    random_tk_g = rand(train_tk_g, test_tk, fout_tk_random_g)
-    random_tk_g = rand(train_sf_g, test_sf, fout_sf_random_g)
+    rand(train_f, test, fout_random_f)
+    rand(train_g, test, fout_random_g)

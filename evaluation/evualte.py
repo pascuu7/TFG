@@ -8,9 +8,9 @@ import sys
 
 if __name__ == "__main__":
 
-    test = '../segunda_parte/recomendation/train_test/Gowalla/' + sys.argv[1] + '/' + sys.argv[1] + '_test.txt'
-    train_four = '../segunda_parte/recomendation/train_test/Foursquare/' + sys.argv[1] + '/' + sys.argv[1] + '_train.txt'
-    train_gow = '../segunda_parte/recomendation/train_test/Gowalla/' + sys.argv[1] + '/' + sys.argv[1] + '_train.txt'
+    test = '../recomendation/train_test/Gowalla/' + sys.argv[1] + '/' + sys.argv[1] + '_test.txt'
+    train_four = '../recomendation/train_test/Foursquare/' + sys.argv[1] + '/' + sys.argv[1] + '_train.txt'
+    train_gow = '../recomendation/train_test/Gowalla/' + sys.argv[1] + '/' + sys.argv[1] + '_train.txt'
 
     if sys.argv[1] == "US_SanFrancisco":
         pre = 'SF'
@@ -21,23 +21,23 @@ if __name__ == "__main__":
     else:
         pre = 'TK'
 
-    recomendationPOPGow = '../segunda_parte/recomendation/users_recomendations/Gowalla/Popularity/' + pre + '_Top50_RepeatedScore' + sys.argv[2] + '.txt'
-    recomendationPOPFour = '../segunda_parte/recomendation/users_recomendations/Foursquare/Popularity/' + pre + '_Top50_RepeatedScore' + sys.argv[2] + '.txt'
+    recomendationPOPGow = '../recomendation/users_recomendations/Gowalla/Popularity/' + pre + '_Top50_RepeatedScore' + sys.argv[2] + '.txt'
+    recomendationPOPFour = '../recomendation/users_recomendations/Foursquare/Popularity/' + pre + '_Top50_RepeatedScore' + sys.argv[2] + '.txt'
 
-    recomendationKNNGow = '../segunda_parte/recomendation/users_recomendations/Gowalla/Knn/' + pre + '_Top50_Knn' + sys.argv[3] + '.txt'
-    recomendationKNNFour = '../segunda_parte/recomendation/users_recomendations/Foursquare/Knn/' + pre + '_Top50_Knn' + sys.argv[3] + '.txt'
+    recomendationKNNGow = '../recomendation/users_recomendations/Gowalla/Knn/' + pre + '_Top50_Knn' + sys.argv[3] + '.txt'
+    recomendationKNNFour = '../recomendation/users_recomendations/Foursquare/Knn/' + pre + '_Top50_Knn' + sys.argv[3] + '.txt'
 
-    recomendationHYBRIDGow = '../segunda_parte/recomendation/users_recomendations/Gowalla/Hybrid/' + pre + '_Top50_knn' + sys.argv[3] + '.txt'
-    recomendationHYBRIDFour = '../segunda_parte/recomendation/users_recomendations/Foursquare/Hybrid/' + pre + '_Top50_knn' + sys.argv[3] + '.txt'
+    recomendationHYBRIDGow = '../recomendation/users_recomendations/Gowalla/Hybrid/' + pre + '_Top50_knn' + sys.argv[3] + '.txt'
+    recomendationHYBRIDFour = '../recomendation/users_recomendations/Foursquare/Hybrid/' + pre + '_Top50_knn' + sys.argv[3] + '.txt'
 
-    recomendationRANDOMGow = '../segunda_parte/recomendation/users_recomendations/Gowalla/Random/' + pre + '_50.txt'
-    recomendationRANDOMFour = '../segunda_parte/recomendation/users_recomendations/Foursquare/Random/' + pre + '_50.txt'
+    recomendationRANDOMGow = '../recomendation/users_recomendations/Gowalla/Random/' + pre + '_50.txt'
+    recomendationRANDOMFour = '../recomendation/users_recomendations/Foursquare/Random/' + pre + '_50.txt'
 
-    recomendationSKYLINEGow = '../segunda_parte/recomendation/users_recomendations/Gowalla/Skyline/' + pre + '_Skyline.txt'
-    recomendationSKYLINEFour = '../segunda_parte/recomendation/users_recomendations/Foursquare/Skyline/' + pre + '_Skyline.txt'
+    recomendationSKYLINEGow = '../recomendation/users_recomendations/Gowalla/Skyline/' + pre + '_Skyline.txt'
+    recomendationSKYLINEFour = '../recomendation/users_recomendations/Foursquare/Skyline/' + pre + '_Skyline.txt'
 
 
-    cutoff = sys.argv[4]
+    cutoff = int(sys.argv[4])
 
     print('Precision:')
 

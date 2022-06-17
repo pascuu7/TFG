@@ -75,38 +75,29 @@ def popularity(ftrain, ftest, repeated = False, out = None):
         
 
 if __name__ == "__main__":
-    # Dataset de Foursquare
-    train_ny_f = 'train_test/Foursquare/US_NewYork/US_NewYork_train.txt'
-    train_tk_f = 'train_test/Foursquare/JP_Tokyo/JP_Tokyo_train.txt'
-    train_sf_f = 'train_test/Foursquare/US_SanFrancisco/US_SanFrancisco_train.txt'
+    # guardamos los ficheros train de cada aplicación y test según la ciudad que se indique
+    train_f = 'train_test/Foursquare/' + sys.argv[1] + '/' + sys.argv[1] + '_train.txt'
+    train_g = 'train_test/Gowalla/' + sys.argv[1] + '/' + sys.argv[1] + '_train.txt'
+    test = 'train_test/Gowalla/' + sys.argv[1] + '/' + sys.argv[1] + '_test.txt'
 
-    # Dataset de Foursquare + Gowalla
-    train_ny_g = 'train_test/Gowalla/US_NewYork/US_NewYork_train.txt'
-    train_tk_g = 'train_test/Gowalla/JP_Tokyo/JP_Tokyo_train.txt'
-    train_sf_g = 'train_test/Gowalla/US_SanFrancisco/US_SanFrancisco_train.txt'
+    # guardamos en pre el prefijo del país que se indique
+    if sys.argv[1] == "US_SanFrancisco":
+        pre = 'SF'
 
-    # Test (al ser el mismo es indiferente)
-    test_ny = 'train_test/Gowalla/US_NewYork/US_NewYork_test.txt'
-    test_tk = 'train_test/Gowalla/JP_Tokyo/JP_Tokyo_test.txt'
-    test_sf = 'train_test/Gowalla/US_SanFrancisco/US_SanFrancisco_test.txt'
+    elif sys.argv[1] == "US_NewYork":
+        pre = 'NY'
 
-    fout_ny_pop_f = 'users_recomendations/Foursquare/Popularity/NY_Top50_RepeatedScore' + sys.argv[1] + '.txt'
-    fout_tk_pop_f = 'users_recomendations/Foursquare/Popularity/TK_Top50_RepeatedScore' + sys.argv[1] + '.txt'
-    fout_sf_pop_f = 'users_recomendations/Foursquare/Popularity/SF_Top50_RepeatedScore' + sys.argv[1] + '.txt'
+    else:
+        pre = 'TK'
 
-    fout_ny_pop_g = 'users_recomendations/Gowalla/Popularity/NY_Top50_RepeatedScore' + sys.argv[1] + '.txt'
-    fout_tk_pop_g = 'users_recomendations/Gowalla/Popularity/TK_Top50_RepeatedScore' + sys.argv[1] + '.txt'
-    fout_sf_pop_g = 'users_recomendations/Gowalla/Popularity/SF_Top50_RepeatedScore' + sys.argv[1] + '.txt'
+    # ficheros de salida con las recomendaciones
+    fout_pop_f = 'users_recomendations/Foursquare/Popularity/' + pre + '_Top50_RepeatedScore' + sys.argv[2] + '.txt'
+    fout_pop_g = 'users_recomendations/Gowalla/Popularity/' + pre + '_Top50_RepeatedScore' + sys.argv[2] + '.txt'
 
-    if sys.argv[1] == 'True':
+    if sys.argv[2] == 'True':
         repeated = True
     else:
         repeated = False
 
-    popularity(train_ny_f, test_ny, out=fout_ny_pop_f, repeated=repeated)
-    popularity(train_tk_f, test_tk, out=fout_tk_pop_f, repeated=repeated)
-    popularity(train_sf_f, test_sf, out=fout_sf_pop_f, repeated=repeated)
-
-    popularity(train_ny_g, test_ny, out=fout_ny_pop_g, repeated=repeated)
-    popularity(train_tk_g, test_tk, out=fout_tk_pop_g, repeated=repeated)
-    popularity(train_sf_g, test_sf, out=fout_sf_pop_g, repeated=repeated)
+    popularity(train_f, test, out=fout_pop_f, repeated=repeated)
+    popularity(train_g, test, out=fout_pop_g, repeated=repeated)

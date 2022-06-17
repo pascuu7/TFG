@@ -121,41 +121,29 @@ def knn(ftrain, ftest, k, out = None):
     users = read_users(ftest)
 
     data_prepare_knn(ftrain)
-    i = 0
     for user_test in users:
-        i += 1
-        print(i)
         all_users_knn(user_test, out, k)
 
 
 if __name__ == "__main__":
-        # Dataset de Foursquare
-    train_ny_f = 'train_test/Foursquare/US_NewYork/US_NewYork_train.txt'
-    train_tk_f = 'train_test/Foursquare/JP_Tokyo/JP_Tokyo_train.txt'
-    train_sf_f = 'train_test/Foursquare/US_SanFrancisco/US_SanFrancisco_train.txt'
+    # guardamos los ficheros train de cada aplicación y test según la ciudad que se indique
+    train_f = 'train_test/Foursquare/' + sys.argv[1] + '/' + sys.argv[1] + '_train.txt'
+    train_g = 'train_test/Gowalla/' + sys.argv[1] + '/' + sys.argv[1] + '_train.txt'
+    test = 'train_test/Gowalla/' + sys.argv[1] + '/' + sys.argv[1] + '_test.txt'
 
-    # Dataset de Foursquare + Gowalla
-    train_ny_g = 'train_test/Gowalla/US_NewYork/US_NewYork_train.txt'
-    train_tk_g = 'train_test/Gowalla/JP_Tokyo/JP_Tokyo_train.txt'
-    train_sf_g = 'train_test/Gowalla/US_SanFrancisco/US_SanFrancisco_train.txt'
+    # guardamos en pre el prefijo del país que se indique
+    if sys.argv[1] == "US_SanFrancisco":
+        pre = 'SF'
 
-    # Test (al ser el mismo es indiferente)
-    test_ny = 'train_test/Gowalla/US_NewYork/US_NewYork_test.txt'
-    test_tk = 'train_test/Gowalla/JP_Tokyo/JP_Tokyo_test.txt'
-    test_sf = 'train_test/Gowalla/US_SanFrancisco/US_SanFrancisco_test.txt'
+    elif sys.argv[1] == "US_NewYork":
+        pre = 'NY'
 
-    fout_ny_knn_f = 'users_recomendations/Foursquare/Knn/NY_Top50_Knn' + sys.argv[1] + '.txt'
-    fout_tk_knn_f = 'users_recomendations/Foursquare/Knn/TK_Top50_Knn' + sys.argv[1] + '.txt'
-    fout_sf_knn_f = 'users_recomendations/Foursquare/Knn/SF_Top50_Knn' + sys.argv[1] + '.txt'
+    else:
+        pre = 'TK'
 
-    fout_ny_knn_g = 'users_recomendations/Gowalla/Knn/NY_Top50_Knn' + sys.argv[1] + '.txt'
-    fout_tk_knn_g = 'users_recomendations/Gowalla/Knn/TK_Top50_Knn' + sys.argv[1] + '.txt'
-    fout_sf_knn_g = 'users_recomendations/Gowalla/Knn/SF_Top50_Knn' + sys.argv[1] + '.txt'
-           
-    knn(train_ny_f, test_ny, int(sys.argv[1]), out=fout_ny_knn_f)
-    knn(train_tk_f, test_tk, int(sys.argv[1]), out=fout_tk_knn_f)
-    knn(train_sf_f, test_sf, int(sys.argv[1]), out=fout_sf_knn_f)
-
-    knn(train_ny_g, test_ny, int(sys.argv[1]), out=fout_ny_knn_g)
-    knn(train_tk_g, test_tk, int(sys.argv[1]), out=fout_tk_knn_g)
-    knn(train_sf_g, test_sf, int(sys.argv[1]), out=fout_sf_knn_g)
+    # ficheros de salida con las recomendaciones
+    fout_knn_f = 'users_recomendations/Foursquare/Knn/' + pre + '_Top50_Knn' + sys.argv[2] + '.txt'
+    fout_knn_g = 'users_recomendations/Gowalla/Knn/' + pre + '_Top50_Knn' + sys.argv[2] + '.txt'
+        
+    knn(train_f, test, int(sys.argv[2]), out=fout_knn_f)
+    knn(train_g, test, int(sys.argv[2]), out=fout_knn_g)

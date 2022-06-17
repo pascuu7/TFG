@@ -1,4 +1,5 @@
 import os
+import sys
 
 def skyline(ftrain, ftest, out):
 
@@ -48,34 +49,24 @@ def skyline(ftrain, ftest, out):
 
 
 if __name__ == "__main__":
-    # Dataset de Foursquare
-    train_ny_f = 'train_test/Foursquare/US_NewYork/US_NewYork_train.txt'
-    train_tk_f = 'train_test/Foursquare/JP_Tokyo/JP_Tokyo_train.txt'
-    train_sf_f = 'train_test/Foursquare/US_SanFrancisco/US_SanFrancisco_train.txt'
+    # guardamos los ficheros train de cada aplicación y test según la ciudad que se indique
+    train_f = 'train_test/Foursquare/' + sys.argv[1] + '/' + sys.argv[1] + '_train.txt'
+    train_g = 'train_test/Gowalla/' + sys.argv[1] + '/' + sys.argv[1] + '_train.txt'
+    test = 'train_test/Gowalla/' + sys.argv[1] + '/' + sys.argv[1] + '_test.txt'
 
-    # Dataset de Foursquare + Gowalla
-    train_ny_g = 'train_test/Gowalla/US_NewYork/US_NewYork_train.txt'
-    train_tk_g = 'train_test/Gowalla/JP_Tokyo/JP_Tokyo_train.txt'
-    train_sf_g = 'train_test/Gowalla/US_SanFrancisco/US_SanFrancisco_train.txt'
+    # guardamos en pre el prefijo del país que se indique
+    if sys.argv[1] == "US_SanFrancisco":
+        pre = 'SF'
 
-    # Test (al ser el mismo es indiferente)
-    test_ny = 'train_test/Gowalla/US_NewYork/US_NewYork_test.txt'
-    test_tk = 'train_test/Gowalla/JP_Tokyo/JP_Tokyo_test.txt'
-    test_sf = 'train_test/Gowalla/US_SanFrancisco/US_SanFrancisco_test.txt'
+    elif sys.argv[1] == "US_NewYork":
+        pre = 'NY'
 
-    fout_ny_skyline_f = 'users_recomendations/Foursquare/Skyline/NY_Skyline.txt'
-    fout_tk_skyline_f = 'users_recomendations/Foursquare/Skyline/TK_Skyline.txt'
-    fout_sf_skyline_f = 'users_recomendations/Foursquare/Skyline/SF_Skyline.txt'
+    else:
+        pre = 'TK'
 
-    fout_ny_skyline_g = 'users_recomendations/Gowalla/Skyline/NY_Skyline.txt'
-    fout_tk_skyline_g = 'users_recomendations/Gowalla/Skyline/TK_Skyline.txt'
-    fout_sf_skyline_g = 'users_recomendations/Gowalla/Skyline/SF_Skyline.txt'
+    # ficheros de salida con las recomendaciones
+    fout_skyline_f = 'users_recomendations/Foursquare/Skyline/' + pre + '_Skyline.txt'
+    fout_skyline_g = 'users_recomendations/Gowalla/Skyline/' + pre + '_Skyline.txt'
 
-    skyline_ny_f = skyline(train_ny_f, test_ny, fout_ny_skyline_f)
-    skyline_tk_f = skyline(train_tk_f, test_tk, fout_tk_skyline_f)
-    skyline_sf_f = skyline(train_sf_f, test_sf, fout_sf_skyline_f)
-
-
-    skyline_ny_g = skyline(train_ny_g, test_ny, fout_ny_skyline_g)
-    skyline_tk_g = skyline(train_tk_g, test_tk, fout_tk_skyline_g)
-    skyline_sf_g = skyline(train_sf_g, test_sf, fout_sf_skyline_g)
+    skyline(train_f, test, fout_skyline_f)
+    skyline(train_g, test, fout_skyline_g)
