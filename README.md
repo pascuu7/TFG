@@ -8,9 +8,8 @@ Crear las carpetas necesarias para la ejecución:
 1. `python3 setup.py`
 
 Descargar el dataset de las aplicaciones Foursquare y Gowalla:
-1. `cd dataset/Foursquare/dataset/`
-2. Descargar el dataset que contiene (3.Global-scale Check-in Dataset) en la URL https://sites.google.com/site/yangdingqi/home/foursquare-dataset y extraer en el directorio actual.
-3. `cd ../../Gowalla` Descargar el dataset que contiene (loc-gowalla_totalCheckins.txt.gz) en la URL https://snap.stanford.edu/data/loc-gowalla.html y extraer en el directorio actual.
+1. Descargar el dataset que contiene (3.Global-scale Check-in Dataset) en la URL https://sites.google.com/site/yangdingqi/home/foursquare-dataset y extraer los ficheros en el directorio dataset/Foursquare/dataset/.
+2. Descargar el dataset que contiene (loc-gowalla_totalCheckins.txt.gz) en la URL https://snap.stanford.edu/data/loc-gowalla.html y extraer el fichero en el directorio dataset/Gowalla.
 
 Preparar el dataset:
 1. `cd dataset/Foursquare/`
@@ -32,7 +31,7 @@ Preparar el dataset:
 Recomendaciones (las ciudades disponibles son US_NewYork, US_SanFrancisco y JP_Tokyo) hay dos opciones.
 Recomendar con los parámetros estudiados, knn = 100 y sin elementos repetidos en popularidad):
 1. `cd ../recomendation/`
-2. `python3 recommend.py`
+2. `python3 recommend.py ciudad` donde ciudad corresponde con las 3 ciudades indicadas arriba.
 
 Recomendar cada algoritmo por separando escogiendo los parámetros:
 1. `cd ../recomendation/`
