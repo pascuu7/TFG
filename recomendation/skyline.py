@@ -27,7 +27,7 @@ def skyline(ftrain, ftest, out):
             # 2: timestamp
             # 3: rating
 
-            if split[0] not in visits:
+            if int(split[0]) not in visits:
                 visits[int(split[0])] = set([int(split[1])])
             else:
                 visits[int(split[0])].add(int(split[1]))
